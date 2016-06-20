@@ -53,8 +53,10 @@ $(document).ready(function() {
     var price = parseInt($("#ride-price").val());
     var seats = parseInt($("#ride-seats").val());
     var newRide = new Ride(from, to, date, time, seats, driver, price);
-    newRide.addRider();
+    // newRide.addRider();
+    $("ul.ride-list").append("<li>" + newRide.from + " to " + newRide.to + "</li>");
     console.log(newRide);
+    $("form").trigger("reset");
   });
 
   $("form#new-user").submit(function(event) {
@@ -66,6 +68,7 @@ $(document).ready(function() {
     var image = $("#image").val();
     var newUser = new User(username, firstName, lastName, age, image);
     console.log(newUser);
+    $("form").trigger("reset");
   });
 
 });
