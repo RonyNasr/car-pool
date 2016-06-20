@@ -17,32 +17,38 @@
     <div class="container new-ride">
       <form id="new-ride">
         <div class="form-group">
-          <label for="ride-from">From:</label>
-          <input type="text" class="form-control" id="ride-from">
+          <label for="ride-driver">Driver Name:</label>
+          <input type="text" class="form-control" id="ride-driver">
         </div>
-        <div class="form-group">
-          <label for="ride-to">To:</label>
-          <input type="text" class="form-control" id="ride-to">
+        <div class="ride-from">
+          <label for="ride-from">Ride from:</label>
+          <select class="form-control" id="ride-from">
+            <option>Portland, OR</option>
+            <option>Seattle, WA</option>
+          </select>
+        </div>
+        <div class="ride-to">
+          <label for="male-female">Ride to:</label>
+          <select class="form-control" id="ride-to">
+            <option>Seattle, WA</option>
+            <option>Portland, OR</option>
+          </select>
         </div>
         <div class="form-group">
           <label for="ride-date">Date:</label>
           <input type="date" class="form-control" id="ride-date">
         </div>
         <div class="form-group">
-          <label for="time">Time:</label>
-          <input type="time" class="form-control" id="description">
+          <label for="ride-time">Time:</label>
+          <input type="time" class="form-control" id="ride-time">
         </div>
         <div class="form-group">
-          <label for="ride-location">Pickup location:</label>
-          <input type="text" class="form-control" id="ride-date">
+          <label for="ride-price">Price:</label>
+          <input type="number" class="form-control" id="ride-price">
         </div>
         <div class="form-group">
-          <label for="price">Price:</label>
-          <input type="number" class="form-control" id="image">
-        </div>
-        <div class="form-group">
-          <label for="seats">Available seats:</label>
-          <input type="number" class="form-control" id="seats">
+          <label for="ride-seats">Available seats:</label>
+          <input type="number" class="form-control" id="ride-seats">
         </div>
 
         <button type="submit" name="button" class="btn">Submit</button>
