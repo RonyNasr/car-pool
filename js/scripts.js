@@ -2,7 +2,7 @@
 
 //Ride constructor
 
-function Ride (from, to, date, time, seats, driver){
+function Ride (from, to, date, time, seats, driver, price){
   this.id = null;
   this.from = from;
   this.to = to;
@@ -11,6 +11,7 @@ function Ride (from, to, date, time, seats, driver){
   this.seats = seats;
   this.driver = driver;
   this.riders = [];
+  this.price = price;
 }
 
 //Ride protoype methods
@@ -34,4 +35,26 @@ function User (username, firstName, lastName, age, image){
 
 User.prototype.methodName = function () {
 
+};
+
+function RideList () {
+  this.rides = [];
+};
+
+RideList.prototype.addRide = function (ride) {
+  this.rides.push(ride);
+};
+
+RideList.prototype.removeRide = function (rideId) {
+  this.rides.splice(rideId, 1);
+};
+
+RideList.prototype.findRide = function (from) {
+  var result = [];
+  for (var i = 0; i < this.rides.length; i++) {
+    if (this.rides[i].from === from){
+      result.push(this.rides[i].id);
+    }
+  }
+  return result;
 };
