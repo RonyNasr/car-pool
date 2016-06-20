@@ -17,8 +17,9 @@ function Ride (from, to, date, time, seats, driver, price){
 
 //Ride protoype methods
 
-Ride.prototype.methodName = function () {
-
+Ride.prototype.addRider = function(user) {
+  this.riders.push(user);
+  this.seats--;
 };
 
 //User constructor
@@ -42,7 +43,7 @@ User.prototype.methodName = function () {
 
 // UI Logic
 $(document).ready(function() {
-  $("form").submit(function(event) {
+  $("form#new-ride").submit(function(event) {
     event.preventDefault();
     var driver = $("#ride-driver").val();
     var from = $("#ride-from").val();
@@ -52,6 +53,19 @@ $(document).ready(function() {
     var price = parseInt($("#ride-price").val());
     var seats = parseInt($("#ride-seats").val());
     var newRide = new Ride(from, to, date, time, seats, driver, price);
+    newRide.addRider();
     console.log(newRide);
   });
+
+  $("form#new-user").submit(function(event) {
+    event.preventDefault();
+    var username = $("#username").val();
+    var firstName = $("#firstname").val();
+    var lastName = $("#lastname").val();
+    var age = $("#age").val();
+    var image = $("#image").val();
+    var newUser = new User(username, firstName, lastName, age, image);
+    console.log(newUser);
+  });
+
 });
