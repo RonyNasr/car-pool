@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 // Backend logic
 
 //Ride constructor
@@ -37,4 +36,3 @@ function User (username, firstName, lastName, age, image){
 User.prototype.methodName = function () {
 
 };
->>>>>>> master
