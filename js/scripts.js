@@ -1,3 +1,4 @@
+
 // Backend logic
 
 //Ride constructor
@@ -16,8 +17,9 @@ function Ride (from, to, date, time, seats, driver, price){
 
 //Ride protoype methods
 
-Ride.prototype.methodName = function () {
-
+Ride.prototype.addRider = function(user) {
+  this.riders.push(user);
+  this.seats--;
 };
 
 //User constructor
@@ -36,6 +38,7 @@ function User (username, firstName, lastName, age, image){
 User.prototype.methodName = function () {
 
 };
+
 
 function RideList () {
   this.rides = [];
@@ -58,3 +61,37 @@ RideList.prototype.findRide = function (from) {
   }
   return result;
 };
+
+
+
+// UI Logic
+$(document).ready(function() {
+  $("form#new-ride").submit(function(event) {
+    event.preventDefault();
+    var driver = $("#ride-driver").val();
+    var from = $("#ride-from").val();
+    var to = $("#ride-to").val();
+    var date = $("#ride-date").val();
+    var time = $("#ride-time").val();
+    var price = parseInt($("#ride-price").val());
+    var seats = parseInt($("#ride-seats").val());
+    var newRide = new Ride(from, to, date, time, seats, driver, price);
+    // newRide.addRider();
+    $("ul.ride-list").append("<li>" + newRide.from + " to " + newRide.to + "</li>");
+    console.log(newRide);
+    $("form").trigger("reset");
+  });
+
+  $("form#new-user").submit(function(event) {
+    event.preventDefault();
+    var username = $("#username").val();
+    var firstName = $("#firstname").val();
+    var lastName = $("#lastname").val();
+    var age = $("#age").val();
+    var image = $("#image").val();
+    var newUser = new User(username, firstName, lastName, age, image);
+    console.log(newUser);
+    $("form").trigger("reset");
+  });
+
+});
