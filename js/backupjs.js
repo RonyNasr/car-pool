@@ -1,6 +1,3 @@
-// Backend logic
-
-//Ride constructor
 function Ride (from, to, date, time, seats, price){
   this.id = null;
   this.from = from;
