@@ -18,8 +18,13 @@ function Ride (from, to, date, time, seats, driver, price){
 //Ride protoype methods
 
 Ride.prototype.addRider = function(user) {
-  this.riders.push(user);
-  this.seats--;
+  if(this.seats > 0){
+    this.riders.push(user);
+    this.seats--;
+  return true;
+}else {
+  return false;
+}
 };
 
 //User constructor
@@ -73,6 +78,9 @@ RideList.prototype.listRides = function (idList) {
         'To: ' + list.rides[id].to + '<br>' +
         'Date: ' + list.rides[id].date + '<br>' +
         'Driver: ' + list.rides[id].driver+ '<br>' +
+        '<span class = "btn btn-success" id="' + id + '">Join Ride</span>'+
+        '   '+
+        '<span class = "btn btn-danger btn-disabled" id="' + id + '">Leave Ride</span>'+
       '</p>'+
     '</div>';
   });
@@ -131,7 +139,6 @@ $(document).ready(function() {
     var inputtedTo = $("#to :selected").val();
     var inputtedDate = $("#date").val();
     var searchResults = myList.search(inputtedFrom,inputtedTo,inputtedDate);
-    console.log(searchResults);
     $("#ride-results").empty();
     $("#ride-results").append(myList.listRides(searchResults));
 
