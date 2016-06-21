@@ -47,3 +47,13 @@ display:inline-block;
   text-decoration: underline;
   cursor: pointer;
 }
+
+.new-user-screen {
+  display: none;
+  margin-top: 20px;
+  border: 1px solid red;
+}
+
+.glyphicon {
+  font-size: 50px;
+}

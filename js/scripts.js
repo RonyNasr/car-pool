@@ -1,14 +1,14 @@
 // Backend logic
 
 //Ride constructor
-function Ride (from, to, date, time, seats, driver, price){
+function Ride (from, to, date, time, seats, price){
   this.id = null;
   this.from = from;
   this.to = to;
   this.date = date;
   this.time = time;
   this.seats = seats;
-  this.driver = driver;
+  this.driver = [];
   this.riders = [];
   this.price = price;
 }
@@ -25,18 +25,24 @@ Ride.prototype.addRider = function(user) {
   }
 };
 
+Ride.prototype.listRiders = function() {
+  var htmlText = '<ul>';
+  this.riders.forEach(function(rider) {
+    htmlText = htmlText +
+              '<li>' + rider.firstName + ' ' + rider.lastName + '</li>';
+  });
+  htmlText = htmlText + '</ul>';
+  return htmlText;
+};
+
 Ride.prototype.addDriver = function(driverName, allUsersArray) {
   var newDriverArray = [];
-  console.log("this.driver: " + this.driver);
-
   allUsersArray.forEach(function(user){
-    console.log("user.username: " + user.username);
     if (driverName === user.username) {
       newDriverArray.push(user);
     }
   })
   this.driver = newDriverArray;
-  console.log("this.driver: " + this.driver[0].username);
 };
 
 //User constructor
@@ -89,9 +95,30 @@ RideList.prototype.listRides = function (idList) {
         'To: ' + list.rides[id].to + '<br>' +
         'Date: ' + list.rides[id].date + '<br>' +
         'Driver: ' + list.rides[id].driver+ '<br>' +
+        'Passengers : ' + list.rides[id].listRiders() + '<br>' +
         '<span class = "btn btn-success" id="' + id + '">Join Ride</span>'+
         '   '+
         '<span class = "btn btn-danger btn-disabled" id="' + id + '">Leave Ride</span>'+
+      '</p>'+
+    '</div>';
+  });
+return htmlText
+};
+
+RideList.prototype.listAllRides = function() {
+  var htmlText = "";
+  this.rides.forEach(function(ride,index){
+    htmlText = htmlText +
+    '<div class="row result" id ="' + index + '">' +
+      '<p>' +
+        'From: ' + ride.from + '<br>' +
+        'To: ' + ride.to + '<br>' +
+        'Date: ' + ride.date + '<br>' +
+        'Driver: ' + ride.driver.username + '<br>' +
+        'Passengers : ' + ride.listRiders() + '<br>' +
+        '<span class = "btn btn-success" id="' + index + '">Join Ride</span>' +
+        '   ' +
+        '<span class = "btn btn-danger btn-disabled" id="' + index + '">Leave Ride</span>'+
       '</p>'+
     '</div>';
   });
@@ -151,7 +178,6 @@ $(document).ready(function() {
     $("#myModal").modal('show');
   });
 
-
   $(".navbar-default").on("submit","#new-user",function(event) {
     event.preventDefault();
     var username = $("#username").val();
@@ -165,6 +191,7 @@ $(document).ready(function() {
     console.log(allUsers);
     $("form").trigger("reset");
     $("#myModal").modal('hide');
+    $(".new-user-screen").show();
   });
 
   $("form#new-ride").submit(function(event) {
@@ -180,5 +207,15 @@ $(document).ready(function() {
     newRide.addDriver(drivername, allUsers);
     allRides.addRide(newRide);
     $("form").trigger("reset");
+    $("#new-ride").hide();
+    console.log(allRides);
+  });
+
+  $("#post-ride").click(function() {
+    $("#new-ride").show();
+  });
+
+  $("#browse-ride").click(function() {
+    $("#all-rides").append(allRides.listAllRides());
   });
 });

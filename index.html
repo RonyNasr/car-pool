@@ -54,46 +54,60 @@
       <ul class="ride-list"></ul>
     </div>
 
-    <div class="container new-ride">
-      <form id="new-ride">
-        <div class="form-group">
-          <label for="ride-driver">Driver Username:</label>
-          <input type="text" class="form-control" id="ride-driver">
-        </div>
-        <div class="ride-from">
-          <label for="ride-from">Ride from:</label>
-          <select class="form-control" id="ride-from">
-            <option value="Portland">Portland, OR</option>
-            <option value="Seattle">Seattle, WA</option>
-          </select>
-        </div>
-        <div class="ride-to">
-          <label for="male-female">Ride to:</label>
-          <select class="form-control" id="ride-to">
-            <option value="Seattle">Seattle, WA</option>
-            <option value="Portland">Portland, OR</option>
-          </select>
-        </div>
 
-        <div class="form-group">
-          <label for="ride-date">Date:</label>
-          <input type="date" class="form-control" id="ride-date">
+    <div class="new-user-screen">
+      <div class="row">
+        <div class="col-xs-6">
+          <h1 id="post-ride"><span class="glyphicon glyphicon-pencil"></span>Post a ride</h1>
         </div>
-        <div class="form-group">
-          <label for="ride-time">Time:</label>
-          <input type="time" class="form-control" id="ride-time">
+        <div class="col-xs-6">
+          <h1 id="browse-ride"><span class="glyphicon glyphicon-globe"></span>Browse all rides</h1>
         </div>
-        <div class="form-group">
-          <label for="ride-price">Price:</label>
-          <input type="number" class="form-control" id="ride-price">
-        </div>
-        <div class="form-group">
-          <label for="ride-seats">Available seats:</label>
-          <input type="number" class="form-control" id="ride-seats">
-        </div>
-        <button type="submit" name="button" class="btn">Submit</button>
-      </form>
+      </div>
     </div>
+
+      <div id="all-rides">
+      </div>
+
+      <div class="container new-ride">
+        <form id="new-ride">
+          <div class="form-group">
+            <label for="ride-driver">Driver Username:</label>
+            <input type="text" class="form-control" id="ride-driver">
+          </div>
+          <div class="ride-from">
+            <label for="ride-from">Ride from:</label>
+            <select class="form-control" id="ride-from">
+              <option value="Portland">Portland, OR</option>
+              <option value="Seattle">Seattle, WA</option>
+            </select>
+          </div>
+          <div class="ride-to">
+            <label for="male-female">Ride to:</label>
+            <select class="form-control" id="ride-to">
+              <option value="Seattle">Seattle, WA</option>
+              <option value="Portland">Portland, OR</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ride-date">Date:</label>
+            <input type="date" class="form-control" id="ride-date">
+          </div>
+          <div class="form-group">
+            <label for="ride-time">Time:</label>
+            <input type="time" class="form-control" id="ride-time">
+          </div>
+          <div class="form-group">
+            <label for="ride-price">Price:</label>
+            <input type="number" class="form-control" id="ride-price">
+          </div>
+          <div class="form-group">
+            <label for="ride-seats">Available seats:</label>
+            <input type="number" class="form-control" id="ride-seats">
+          </div>
+          <button type="submit" name="button" class="btn">Submit</button>
+        </form>
+      </div>
 
   </body>
 </html>
