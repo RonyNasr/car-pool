@@ -24,12 +24,16 @@ Ride.prototype.addRider = function(user) {
 
 Ride.prototype.addDriver = function(driverName, allUsersArray) {
   var newDriverArray = [];
+  console.log("this.driver: " + this.driver);
+
   allUsersArray.forEach(function(user){
+    console.log("user.username: " + user.username);
     if (driverName === user.username) {
       newDriverArray.push(user);
     }
   })
   this.driver = newDriverArray;
+  console.log("this.driver: " + this.driver[0].username);
 };
 
 //User constructor
@@ -44,14 +48,22 @@ function User (username, firstName, lastName, age, image){
 }
 
 //User prototype methods
-
-// function RideList () {
-//   this.rides = [];
-// };
 //
-// RideList.prototype.addRide = function (ride) {
-//   this.rides.push(ride);
-// };
+// function UserList() {
+//   this.users = [];
+// }
+
+// UserList.prototype.addUser = function(user) {
+//   this.users.push(user);
+// }
+
+function RideList () {
+  this.rides = [];
+};
+
+RideList.prototype.addRide = function (ride) {
+  this.rides.push(ride);
+};
 
 RideList.prototype.removeRide = function (rideId) {
   this.rides.splice(rideId, 1);
@@ -67,9 +79,13 @@ RideList.prototype.findRide = function (from) {
   return result;
 };
 
+
+
+
 // UI Logic
 $(document).ready(function() {
-  var allRides = [];
+  // var allRides = [];
+  var allRides = new RideList();
   var allUsers = [];
   $("form#new-user").submit(function(event) {
     event.preventDefault();
@@ -80,6 +96,8 @@ $(document).ready(function() {
     var image = $("#image").val();
     var newUser = new User(username, firstName, lastName, age, image);
     allUsers.push(newUser);
+    // newUser.id = allUsers.users.length-1;
+    // console.log(allUsers);
     $("form").trigger("reset");
   });
 
@@ -97,8 +115,10 @@ $(document).ready(function() {
     var newRide = new Ride(locationFrom, to, date, time, seats, price);
     console.log(newRide.driver)
     newRide.addDriver(drivername, allUsers);
-    allRides.push(newRide);
+    // allRides.push(newRide);
+    allRides.addRide(newRide);
     console.log(allRides);
     $("form").trigger("reset");
   });
+
 });
