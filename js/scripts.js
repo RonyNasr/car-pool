@@ -3,14 +3,14 @@
 
 //Ride constructor
 
-function Ride (from, to, date, time, seats, driver, price){
+function Ride (from, to, date, time, seats, price){
   this.id = null;
   this.from = from;
   this.to = to;
   this.date = date;
   this.time = time;
   this.seats = seats;
-  this.driver = driver;
+  this.driver = [];
   this.riders = [];
   this.price = price;
 }
@@ -82,18 +82,19 @@ RideList.prototype.search = function (from, to, date) {
 
 RideList.prototype.listRides = function (idList) {
   var htmlText = "";
-  var list = this;
+  var tempList = this;
   idList.forEach(function(id){
+    console.log(tempList.rides[id]);
     htmlText = htmlText +
     '<div class="row result" id ="' + id + '">' +
       '<p>' +
-        'From: ' + list.rides[id].from + '<br>' +
-        'To: ' + list.rides[id].to + '<br>' +
-        'Date: ' + list.rides[id].date + '<br>' +
-        'Driver: ' + list.rides[id].driver+ '<br>' +
-        '<span class = "btn btn-success" id="' + id + '">Join Ride</span>'+
-        '   '+
-        '<span class = "btn btn-danger btn-disabled" id="' + id + '">Leave Ride</span>'+
+        'From: ' + tempList.rides[id].from + '<br>' +
+        'To: ' + tempList.rides[id].to + '<br>' +
+        'Date: ' + tempList.rides[id].date + '<br>' +
+        'Driver: ' + tempList.rides[id].driver[0].username+ '<br>' +
+        '<span class = "btn btn-success join" id="' + id + '">Join Ride</span>'+
+        // '   '+
+        // '<span class = "btn btn-danger leave" id="' + id + '">Leave Ride</span>'+
       '</p>'+
     '</div>';
   });
@@ -136,16 +137,18 @@ $(document).ready(function() {
   $("form#new-ride").submit(function(event) {
     event.preventDefault();
     var drivername = $("#ride-driver").val();
-    var locationFrom = $("#ride-from").val();
-    var to = $("#ride-to").val();
+    var locationFrom = $("#ride-from :selected").val();
+    var to = $("#ride-to :selected").val();
     var date = $("#ride-date").val();
     var time = $("#ride-time").val();
     var price = parseInt($("#ride-price").val());
     var seats = parseInt($("#ride-seats").val());
     var newRide = new Ride(locationFrom, to, date, time, seats, price);
+    console.log(price);
     newRide.addDriver(drivername, allUsers);
     // allRides.push(newRide);
     allRides.addRide(newRide);
+    newRide.id = allRides.rides.length-1;
     $("form").trigger("reset");
   });
 
@@ -156,7 +159,14 @@ $(document).ready(function() {
     var inputtedDate = $("#date").val();
     var searchResults = allRides.search(inputtedFrom,inputtedTo,inputtedDate);
     $("#ride-results").empty();
+    console.log("allRides", allRides);
     $("#ride-results").append(allRides.listRides(searchResults));
+  });
+
+  $("#ride-results").on("click","#add",function(){
+    var rideId =  this.id;
+    var riderId = "1"
+    allRides.rides[rideId].addRider(allUsers[riderId]);
   });
 
 });
