@@ -1,30 +1,27 @@
-
 // Backend logic
 
 //Ride constructor
-
-function Ride (from, to, date, time, seats, price){
+function Ride (from, to, date, time, seats, driver, price){
   this.id = null;
   this.from = from;
   this.to = to;
   this.date = date;
   this.time = time;
   this.seats = seats;
-  this.driver = [];
+  this.driver = driver;
   this.riders = [];
   this.price = price;
 }
 
 //Ride protoype methods
-
 Ride.prototype.addRider = function(user) {
   if(this.seats > 0){
     this.riders.push(user);
     this.seats--;
-  return true;
-}else {
-  return false;
-}
+    return true;
+  } else {
+    return false;
+  }
 };
 
 Ride.prototype.addDriver = function(driverName, allUsersArray) {
@@ -51,9 +48,6 @@ function User (username, firstName, lastName, age, image){
   this.image = image;
 }
 
-//User prototype methods
-
-
 function RideList () {
   this.rides = [];
 };
@@ -73,7 +67,7 @@ RideList.prototype.search = function (from, to, date) {
       if (this.rides[i].from === from && this.rides[i].to === to){
         result.push(this.rides[i].id);
       }
-    }else if (this.rides[i].from === from && this.rides[i].to === to && this.rides[i].date === date){
+    } else if (this.rides[i].from === from && this.rides[i].to === to && this.rides[i].date === date) {
       result.push(this.rides[i].id);
     }
   }
@@ -82,19 +76,18 @@ RideList.prototype.search = function (from, to, date) {
 
 RideList.prototype.listRides = function (idList) {
   var htmlText = "";
-  var tempList = this;
+  var list = this;
   idList.forEach(function(id){
-    console.log(tempList.rides[id]);
     htmlText = htmlText +
     '<div class="row result" id ="' + id + '">' +
       '<p>' +
-        'From: ' + tempList.rides[id].from + '<br>' +
-        'To: ' + tempList.rides[id].to + '<br>' +
-        'Date: ' + tempList.rides[id].date + '<br>' +
-        'Driver: ' + tempList.rides[id].driver[0].username+ '<br>' +
-        '<span class = "btn btn-success join" id="' + id + '">Join Ride</span>'+
-        // '   '+
-        // '<span class = "btn btn-danger leave" id="' + id + '">Leave Ride</span>'+
+        'From: ' + list.rides[id].from + '<br>' +
+        'To: ' + list.rides[id].to + '<br>' +
+        'Date: ' + list.rides[id].date + '<br>' +
+        'Driver: ' + list.rides[id].driver+ '<br>' +
+        '<span class = "btn btn-success" id="' + id + '">Join Ride</span>'+
+        '   '+
+        '<span class = "btn btn-danger btn-disabled" id="' + id + '">Leave Ride</span>'+
       '</p>'+
     '</div>';
   });
@@ -116,8 +109,57 @@ $(document).ready(function() {
   var allUsers = [];
   var currentUser = null;
 
-  // Create a user and add him to allUsers
-  $("form#new-user").submit(function(event) {
+  //Search for a ride
+  $("#search").click(function(){
+    var inputtedFrom = $("#from :selected").val();
+    var inputtedTo = $("#to :selected").val();
+    var inputtedDate = $("#date").val();
+    var searchResults = allRides.search(inputtedFrom,inputtedTo,inputtedDate);
+    $("#ride-results").empty();
+    $("#ride-results").append(allRides.listRides(searchResults));
+  });
+
+  $("#register").click(function() {
+    $(".navbar-default").append('<div id="myModal" class="modal fade" tabindex="-1"role="dialog">' +
+                                '<div class="modal-dialog">' +
+                                  '<div class="modal-content">' +
+                                    '<div class="modal-header">' +
+                                      '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                                      '<h4 class="modal-title">Create a new account</h4>' +
+                                    '</div>' +
+                                    '<div class="modal-body">' +
+                                      '<form id="new-user">' +
+                                        '<div class="form-group">' +
+                                          '<label for="username">Username:</label>' +
+                                          '<input type="text" class="form-control" id="username">' +
+                                        '</div>' +
+                                        '<div class="form-group">' +
+                                          '<label for="firstname">First Name:</label>' +
+                                          '<input type="text" class="form-control" id="firstname">' +
+                                        '</div>' +
+                                        '<div class="form-group">' +
+                                          '<label for="lastname">Last Name:</label>' +
+                                          '<input type="text" class="form-control" id="lastname">' +
+                                        '</div>' +
+                                        '<div class="form-group">' +
+                                          '<label for="age">Age:</label>' +
+                                          '<input type="number" class="form-control" id="age">' +
+                                        '</div>' +
+                                        '<div class="form-group">' +
+                                          '<label for="image">Image URL:</label>' +
+                                          '<input type="text" class="form-control" id="image">' +
+                                        '</div>' +
+                                        '<button type="submit" name="button" class="btn" id="blah">Submit</button>' +
+                                      '</form>' +
+                                  '</div>' +
+                                '</div>' +
+                              '</div>');
+    $("#myModal").modal('show');
+  });
+
+
+  $(".navbar-default").on("submit","#new-user",function(event) {
+
     event.preventDefault();
     var username = $("#username").val();
     var firstName = $("#firstname").val();
@@ -126,25 +168,23 @@ $(document).ready(function() {
     var image = $("#image").val();
     var newUser = new User(username, firstName, lastName, age, image);
     allUsers.push(newUser);
-    newUser.id = allUserslength-1;
+    newUser.id = allUsers.length-1;
     $("form").trigger("reset");
+    $("#myModal").modal('hide');
   });
 
-  //Create a ride and add it to allRides
   $("form#new-ride").submit(function(event) {
     event.preventDefault();
     var drivername = $("#ride-driver").val();
-    var locationFrom = $("#ride-from :selected").val();
-    var to = $("#ride-to :selected").val();
+    var locationFrom = $("#ride-from").val();
+    var to = $("#ride-to").val();
     var date = $("#ride-date").val();
     var time = $("#ride-time").val();
     var price = parseInt($("#ride-price").val());
     var seats = parseInt($("#ride-seats").val());
     var newRide = new Ride(locationFrom, to, date, time, seats, price);
-    console.log(price);
     newRide.addDriver(drivername, allUsers);
     allRides.addRide(newRide);
-    newRide.id = allRides.rides.length-1;
     $("form").trigger("reset");
   });
 
@@ -173,4 +213,5 @@ $(document).ready(function() {
       // go to main page
     }
   });
+
 });
