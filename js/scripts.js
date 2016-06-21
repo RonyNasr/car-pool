@@ -27,8 +27,21 @@ Ride.prototype.addRider = function(user) {
 }
 };
 
-//User constructor
+Ride.prototype.addDriver = function(driverName, allUsersArray) {
+  var newDriverArray = [];
+  console.log("this.driver: " + this.driver);
 
+  allUsersArray.forEach(function(user){
+    console.log("user.username: " + user.username);
+    if (driverName === user.username) {
+      newDriverArray.push(user);
+    }
+  })
+  this.driver = newDriverArray;
+  console.log("this.driver: " + this.driver[0].username);
+};
+
+//User constructor
 function User (username, firstName, lastName, age, image){
   this.id =null;
   this.username = username;
