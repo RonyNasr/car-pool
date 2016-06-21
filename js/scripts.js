@@ -101,22 +101,22 @@ RideList.prototype.listRides = function (idList) {
 return htmlText
 };
 
+var getCurrentUser = function (allUsers,username){
+  allUsers.forEach (function (user) {
+    if(user.username === username){
+      return user;
+    }
+  });
+  return false
+}
+
 // UI Logic
 $(document).ready(function() {
   var allRides = new RideList();
   var allUsers = [];
+  var currentUser = null;
 
-  // for (var i=0; i<3;i++){
-  //   var newRide = new Ride("Portland", "Seattle", "2016-06-30", "8:00", 5, "David", 10);
-  //   allRides.addRide(newRide);
-  //   newRide.id = allRides.rides.length-1;
-  //
-  // }
-  // for (var i=0; i<3;i++){
-  //   var newRide = new Ride("Salem", "Portland", "2016-06-29", "8:00", 5, "David", 10);
-  //   allRides.addRide(newRide);
-  //   newRide.id = allRides.rides.length-1;
-  // }
+
 
   // Create a user and add him to allUsers
   $("form#new-user").submit(function(event) {
@@ -165,8 +165,16 @@ $(document).ready(function() {
 
   $("#ride-results").on("click","#add",function(){
     var rideId =  this.id;
-    var riderId = "1"
-    allRides.rides[rideId].addRider(allUsers[riderId]);
+    allRides.rides[rideId].addRider(currentUser);
   });
 
+  $("#login").click (
+    var username = $("#usrname").val();
+    currentUser = getCurrentUser(allUsers,username);
+    if (!currentUser){
+      alert("Wrong username/password!")
+    }else{
+
+    }
+  )
 });
