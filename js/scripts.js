@@ -116,8 +116,6 @@ $(document).ready(function() {
   var allUsers = [];
   var currentUser = null;
 
-
-
   // Create a user and add him to allUsers
   $("form#new-user").submit(function(event) {
     event.preventDefault();
@@ -128,8 +126,7 @@ $(document).ready(function() {
     var image = $("#image").val();
     var newUser = new User(username, firstName, lastName, age, image);
     allUsers.push(newUser);
-    // newUser.id = allUsers.users.length-1;
-    // console.log(allUsers);
+    newUser.id = allUserslength-1;
     $("form").trigger("reset");
   });
 
@@ -146,7 +143,6 @@ $(document).ready(function() {
     var newRide = new Ride(locationFrom, to, date, time, seats, price);
     console.log(price);
     newRide.addDriver(drivername, allUsers);
-    // allRides.push(newRide);
     allRides.addRide(newRide);
     newRide.id = allRides.rides.length-1;
     $("form").trigger("reset");
@@ -168,13 +164,13 @@ $(document).ready(function() {
     allRides.rides[rideId].addRider(currentUser);
   });
 
-  $("#login").click (
+  $("#login").click (function() {
     var username = $("#usrname").val();
     currentUser = getCurrentUser(allUsers,username);
     if (!currentUser){
       alert("Wrong username/password!")
     }else{
-
+      // go to main page
     }
-  )
+  });
 });
