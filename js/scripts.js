@@ -89,39 +89,22 @@ return htmlText
 
 // UI Logic
 $(document).ready(function() {
-  var myList = new RideList();
+  var allRides = new RideList();
+  var allUsers = [];
 
-  for (var i=0; i<3;i++){
-    var newRide = new Ride("Portland", "Seattle", "2016-06-30", "8:00", 5, "David", 10);
-    myList.addRide(newRide);
-    newRide.id = myList.rides.length-1;
+  // for (var i=0; i<3;i++){
+  //   var newRide = new Ride("Portland", "Seattle", "2016-06-30", "8:00", 5, "David", 10);
+  //   allRides.addRide(newRide);
+  //   newRide.id = allRides.rides.length-1;
+  //
+  // }
+  // for (var i=0; i<3;i++){
+  //   var newRide = new Ride("Salem", "Portland", "2016-06-29", "8:00", 5, "David", 10);
+  //   allRides.addRide(newRide);
+  //   newRide.id = allRides.rides.length-1;
+  // }
 
-  }
-  for (var i=0; i<3;i++){
-    var newRide = new Ride("Salem", "Portland", "2016-06-29", "8:00", 5, "David", 10);
-    myList.addRide(newRide);
-    newRide.id = myList.rides.length-1;
-  }
-
-  $("form#new-ride").submit(function(event) {
-    event.preventDefault();
-    var driver = $("#ride-driver").val();
-    var from = $("#ride-from").val();
-    var to = $("#ride-to").val();
-    var date = $("#ride-date").val();
-    var time = $("#ride-time").val();
-    var price = parseInt($("#ride-price").val());
-    var seats = parseInt($("#ride-seats").val());
-    var newRide = new Ride(from, to, date, time, seats, driver, price);
-    myList.addRide(newRide);
-    newRide.id = myList.rides.length-1;
-
-    // newRide.addRider();
-    $("ul.ride-list").append("<li>" + newRide.from + " to " + newRide.to + "</li>");
-    console.log(newRide);
-    $("form").trigger("reset");
-  });
-
+  // Create a user and add him to allUsers
   $("form#new-user").submit(function(event) {
     event.preventDefault();
     var username = $("#username").val();
@@ -130,19 +113,37 @@ $(document).ready(function() {
     var age = $("#age").val();
     var image = $("#image").val();
     var newUser = new User(username, firstName, lastName, age, image);
-    console.log(newUser);
+    allUsers.push(newUser);
+    // newUser.id = allUsers.users.length-1;
+    // console.log(allUsers);
     $("form").trigger("reset");
   });
 
+  //Create a ride and add it to allRides
+  $("form#new-ride").submit(function(event) {
+    event.preventDefault();
+    var drivername = $("#ride-driver").val();
+    var locationFrom = $("#ride-from").val();
+    var to = $("#ride-to").val();
+    var date = $("#ride-date").val();
+    var time = $("#ride-time").val();
+    var price = parseInt($("#ride-price").val());
+    var seats = parseInt($("#ride-seats").val());
+    var newRide = new Ride(locationFrom, to, date, time, seats, price);
+    newRide.addDriver(drivername, allUsers);
+    // allRides.push(newRide);
+    allRides.addRide(newRide);
+    $("form").trigger("reset");
+  });
+
+  //Search for a ride
   $("#search").click(function(){
     var inputtedFrom = $("#from :selected").val();
     var inputtedTo = $("#to :selected").val();
     var inputtedDate = $("#date").val();
-    var searchResults = myList.search(inputtedFrom,inputtedTo,inputtedDate);
+    var searchResults = allRides.search(inputtedFrom,inputtedTo,inputtedDate);
     $("#ride-results").empty();
-    $("#ride-results").append(myList.listRides(searchResults));
-
-
+    $("#ride-results").append(allRides.listRides(searchResults));
   });
 
 });
