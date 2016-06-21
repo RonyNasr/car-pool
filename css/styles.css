@@ -1,3 +1,7 @@
-#new-user {
+/*#new-user {
+  display: none;
+}*/
+
+.search {
   display: none;
 }

@@ -14,7 +14,7 @@
   </head>
   <body>
 
-    <div class="container">
+    <div class="container search">
       <label for="from">FROM:</label>
       <select id="from">
         <option value="1">Portland</option>
@@ -33,11 +33,33 @@
         <input id="date" class="form-control" type="date">
       </div>
       <button class ="btn btn-default" type="button" name="button">Search</button>
-
-
     </div>
 
-
+    <div class="container new-user">
+      <form id="new-user">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" class="form-control" id="username">
+        </div>
+        <div class="form-group">
+          <label for="firstname">First Name:</label>
+          <input type="text" class="form-control" id="firstname">
+        </div>
+        <div class="form-group">
+          <label for="lastname">Last Name:</label>
+          <input type="text" class="form-control" id="lastname">
+        </div>
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <input type="number" class="form-control" id="age">
+        </div>
+        <div class="form-group">
+          <label for="image">Image URL:</label>
+          <input type="text" class="form-control" id="image">
+        </div>
+        <button type="submit" name="button" class="btn">Submit</button>
+      </form>
+    </div>
 
     <div class="container new-ride">
       <form id="new-ride">
@@ -77,36 +99,6 @@
         </div>
         <button type="submit" name="button" class="btn">Submit</button>
       </form>
-    </div>
-
-    <div class="container new-user">
-      <form id="new-user">
-        <div class="form-group">
-          <label for="username">Username:</label>
-          <input type="text" class="form-control" id="username">
-        </div>
-        <div class="form-group">
-          <label for="firstname">First Name:</label>
-          <input type="text" class="form-control" id="firstname">
-        </div>
-        <div class="form-group">
-          <label for="lastname">Last Name:</label>
-          <input type="text" class="form-control" id="lastname">
-        </div>
-        <div class="form-group">
-          <label for="age">Age:</label>
-          <input type="number" class="form-control" id="age">
-        </div>
-        <div class="form-group">
-          <label for="image">Image URL:</label>
-          <input type="text" class="form-control" id="image">
-        </div>
-        <button type="submit" name="button" class="btn">Submit</button>
-      </form>
-    </div>
-
-    <div class="ride-list">
-      <ul class="ride-list"></ul>
     </div>
 
   </body>
