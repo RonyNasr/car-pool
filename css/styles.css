@@ -1,14 +1,16 @@
-/*#new-user {
-  display: none;
-}*/
+
+#new-user {
+  /*display: none;*/
+  margin-top: 10%;
+}
 
 /*.search {
   display: none;
 }*/
 
-/*#new-ride {
+#new-ride {
   display: none;
-}*/
+}
 
 /*.ride-search{
   padding-top: 50px;
@@ -17,3 +19,31 @@
 /*#ride-results{
   margin-top: 30px;
 }*/
+
+.jumbotron {
+background-image: url('../img/jumbotron.jpeg');
+background-size: cover;
+background-position: center;
+padding-top: 20%;
+padding-bottom: 25%;
+}
+
+h1 {
+  text-align: center;
+}
+
+.top {
+width:auto;
+display:inline-block;
+}
+
+#search-box {
+  margin-top: -100px;
+  text-align: center;
+  width: 50%;
+}
+
+#register:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
