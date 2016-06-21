@@ -1,14 +1,14 @@
 // Backend logic
 
 //Ride constructor
-function Ride (from, to, date, time, seats, driver, price){
+function Ride (from, to, date, time, seats, price){
   this.id = null;
   this.from = from;
   this.to = to;
   this.date = date;
   this.time = time;
   this.seats = seats;
-  this.driver = driver;
+  this.driver = [];
   this.riders = [];
   this.price = price;
 }
