@@ -102,7 +102,7 @@ return htmlText
 $(document).ready(function() {
   var allRides = new RideList();
   var allUsers = [];
-  
+
   //Search for a ride
   $("#search").click(function(){
     var inputtedFrom = $("#from :selected").val();
@@ -113,43 +113,44 @@ $(document).ready(function() {
     $("#ride-results").append(allRides.listRides(searchResults));
   });
 
-    $("#register").click(function() {
-      $(".navbar-default").append('<div id="myModal" class="modal fade" tabindex="-1"role="dialog">' +
-                                  '<div class="modal-dialog">' +
-                                    '<div class="modal-content">' +
-                                      '<div class="modal-header">' +
-                                        '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
-                                        '<h4 class="modal-title">Create a new account</h4>' +
-                                      '</div>' +
-                                      '<div class="modal-body">' +
-                                        '<form id="new-user">' +
-                                          '<div class="form-group">' +
-                                            '<label for="username">Username:</label>' +
-                                            '<input type="text" class="form-control" id="username">' +
-                                          '</div>' +
-                                          '<div class="form-group">' +
-                                            '<label for="firstname">First Name:</label>' +
-                                            '<input type="text" class="form-control" id="firstname">' +
-                                          '</div>' +
-                                          '<div class="form-group">' +
-                                            '<label for="lastname">Last Name:</label>' +
-                                            '<input type="text" class="form-control" id="lastname">' +
-                                          '</div>' +
-                                          '<div class="form-group">' +
-                                            '<label for="age">Age:</label>' +
-                                            '<input type="number" class="form-control" id="age">' +
-                                          '</div>' +
-                                          '<div class="form-group">' +
-                                            '<label for="image">Image URL:</label>' +
-                                            '<input type="text" class="form-control" id="image">' +
-                                          '</div>' +
-                                          '<button type="submit" name="button" class="btn" id="blah">Submit</button>' +
-                                        '</form>' +
+  $("#register").click(function() {
+    $(".navbar-default").append('<div id="myModal" class="modal fade" tabindex="-1"role="dialog">' +
+                                '<div class="modal-dialog">' +
+                                  '<div class="modal-content">' +
+                                    '<div class="modal-header">' +
+                                      '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                                      '<h4 class="modal-title">Create a new account</h4>' +
                                     '</div>' +
+                                    '<div class="modal-body">' +
+                                      '<form id="new-user">' +
+                                        '<div class="form-group">' +
+                                          '<label for="username">Username:</label>' +
+                                          '<input type="text" class="form-control" id="username">' +
+                                        '</div>' +
+                                        '<div class="form-group">' +
+                                          '<label for="firstname">First Name:</label>' +
+                                          '<input type="text" class="form-control" id="firstname">' +
+                                        '</div>' +
+                                        '<div class="form-group">' +
+                                          '<label for="lastname">Last Name:</label>' +
+                                          '<input type="text" class="form-control" id="lastname">' +
+                                        '</div>' +
+                                        '<div class="form-group">' +
+                                          '<label for="age">Age:</label>' +
+                                          '<input type="number" class="form-control" id="age">' +
+                                        '</div>' +
+                                        '<div class="form-group">' +
+                                          '<label for="image">Image URL:</label>' +
+                                          '<input type="text" class="form-control" id="image">' +
+                                        '</div>' +
+                                        '<button type="submit" name="button" class="btn" id="blah">Submit</button>' +
+                                      '</form>' +
                                   '</div>' +
-                                '</div>');
-      $("#myModal").modal('show');
-    });
+                                '</div>' +
+                              '</div>');
+    $("#myModal").modal('show');
+  });
+
 
   $(".navbar-default").on("submit","#new-user",function(event) {
     event.preventDefault();
@@ -160,7 +161,8 @@ $(document).ready(function() {
     var image = $("#image").val();
     var newUser = new User(username, firstName, lastName, age, image);
     allUsers.push(newUser);
-    newUser.id = allUsers.users.length-1;
+    newUser.id = allUsers.length-1;
+    console.log(allUsers);
     $("form").trigger("reset");
     $("#myModal").modal('hide');
   });
