@@ -97,7 +97,6 @@ RideList.prototype.listRides = function () {
 var displayRides = function (rides) {
   var htmlText = "";
     rides.forEach(function(ride,index){
-    console.log(ride);
     htmlText = htmlText +
     '<div class="row result" id ="' + ride.id + '">' +
     '<p>' +
@@ -110,7 +109,7 @@ var displayRides = function (rides) {
     'Passengers: ' + listRiders(ride.getRiders()) + '<br>' +
     'Seats Available: ' + ride.seats + '<br>' +
     'Price: ' + ride.price + '<br>' +
-    '<span class = "btn btn-success join-ride" id="' + this.id + '">Join Ride</span>'+
+    '<span class = "btn btn-success join-ride" id="' + ride.id + '">Join Ride</span>'+
     '   '+
     '</p>'+
     '</div>';
@@ -120,7 +119,6 @@ var displayRides = function (rides) {
 
 // Function to display all info about user
 var displayUserInfo = function (user){
-  console.log(user);
   if(!user){
     alert("user doesn't exist!!")
   }else{
@@ -273,7 +271,6 @@ $(document).ready(function() {
     allUsers.push(newUser);
     newUser.id = allUsers.length-1;
     currentUser = newUser;
-    console.log(allUsers);
     $("form").trigger("reset");
     $("#myModal").modal('hide');
     $(".new-user-screen").show();
@@ -296,11 +293,11 @@ $(document).ready(function() {
     newRide.addDriver(drivername, allUsers);
     newRide.driver[0].id = 0;
     allRides.addRide(newRide);
+    newRide.id = allRides.rides.length-1;
     $("form").trigger("reset");
     $("#new-ride").hide();
     $("#ride-list").empty();
     $("#ride-list").text("Thanks for submitting your ride!");
-    console.log(allRides);
   });
 
 // Browse all rides
@@ -329,7 +326,6 @@ $(document).ready(function() {
 // Join ride
   $("#ride-list").on("click",".join-ride",function () {
     var rideId = this.id;
-    console.log(rideId, currentUser);
     if(allRides.rides[rideId].addRider(currentUser)){
       $("#ride-list").empty();
       $("#ride-list").append(displayRides(allRides.listRides()));
@@ -345,7 +341,6 @@ $(document).ready(function() {
 // Display driver info
   $("#ride-list").on("click",".driver-name",function () {
     var driverId = this.id;
-    console.log(driverId);
     $("#ride-list").append(displayUserInfo(allUsers[driverId]));
   });
 
