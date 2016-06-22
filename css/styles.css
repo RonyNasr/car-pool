@@ -12,6 +12,10 @@
   display: none;
 }
 
+.glyphicon-pencil {
+  color: purple;
+}
+
 /*.ride-search{
   padding-top: 50px;
 }*/
