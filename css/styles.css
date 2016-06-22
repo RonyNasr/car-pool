@@ -1,22 +1,14 @@
 #new-user {
   /*display: none;*/
   margin-top: 10%;
+  color: darkgrey;
 }
 
 #new-ride {
   display: none;
 }
 
-.jumbotron {
-background-image: url('../img/jumbotron.jpeg');
-background-size: cover;
-background-position: center;
-padding-top: 20%;
-padding-bottom: 25%;
-}
-
-#ride-list{
-
+#ride-list {
   margin-top: 50px;
 }
 
