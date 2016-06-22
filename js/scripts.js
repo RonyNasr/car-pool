@@ -43,6 +43,7 @@ Ride.prototype.addDriver = function(driverName, allUsersArray) {
     }
   })
   this.driver = newDriverArray;
+  console.log("driver name:" + this.driver);
 };
 
 //User constructor
@@ -114,7 +115,9 @@ RideList.prototype.listAllRides = function() {
         'From: ' + ride.from + '<br>' +
         'To: ' + ride.to + '<br>' +
         'Date: ' + ride.date + '<br>' +
-        'Driver: ' + ride.driver.username + '<br>' +
+        'Time: ' + ride.time + '<br>' +
+        'Price: ' + ride.price + '<br>' +
+        'Driver: ' + ride.driver + '<br>' +
         'Passengers : ' + ride.listRiders() + '<br>' +
         '<span class = "btn btn-success" id="' + index + '">Join Ride</span>' +
         '   ' +
@@ -136,13 +139,13 @@ $(document).ready(function() {
     var inputtedTo = $("#to :selected").val();
     var inputtedDate = $("#date").val();
     var searchResults = allRides.search(inputtedFrom,inputtedTo,inputtedDate);
-    $("#ride-results").empty();
-    $("#ride-results").append(allRides.listRides(searchResults));
+    $("#rides-list").empty();
+    $("#rides-list").append(allRides.listRides(searchResults));
   });
 
   // User registration
   $("#register").click(function() {
-    $(".navbar-default").append('<div id="myModal" class="modal fade" tabindex="-1"role="dialog">' +
+    $(".navbar-nav").append('<div id="myModal" class="modal fade" tabindex="-1"role="dialog">' +
                                 '<div class="modal-dialog">' +
                                   '<div class="modal-content">' +
                                     '<div class="modal-header">' +
@@ -179,7 +182,7 @@ $(document).ready(function() {
     $("#myModal").modal('show');
   });
 
-  $(".navbar-default").on("submit","#new-user",function(event) {
+  $(".navbar-nav").on("submit","#new-user",function(event) {
     event.preventDefault();
     var username = $("#username").val();
     var firstName = $("#firstname").val();
@@ -217,6 +220,6 @@ $(document).ready(function() {
   });
 
   $("#browse-ride").click(function() {
-    $("#all-rides").append(allRides.listAllRides());
+    $("#rides-list").append(allRides.listAllRides());
   });
 });
