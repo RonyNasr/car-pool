@@ -14,7 +14,6 @@ function Ride (from, to, date, time, seats, price){
 }
 
 //Ride protoype methods
-
 Ride.prototype.addRider = function(user) {
   if(this.seats > 0){
     this.riders.push(user);
@@ -57,9 +56,7 @@ function User (username, password, firstName, lastName, age, image){
   this.image = image;
 }
 
-//User prototype methods
-
-
+//RideList constructor
 function RideList () {
   this.rides = [];
 };
@@ -149,16 +146,16 @@ $(document).ready(function() {
   var currentUser = null;
 
   //Sample input for search test
-  // for (var i = 0; i < 3; i++) {
-  //   var newRide = new Ride("Portland", "Seattle", '2016-06-30', '08:00AM', 3, 12);
-  //   newRide.driver = "David";
-  //   allRides.addRide(newRide);
-  // }
-  // for (var i = 0; i < 3; i++) {
-  //   var newRide = new Ride("Seattle", "Portland", '2016-06-20', '08:00AM', 3, 12);
-  //   newRide.driver = "Yuri";
-  //   allRides.addRide(newRide);
-  // }
+  for (var i = 0; i < 3; i++) {
+    var newRide = new Ride("Portland", "Seattle", '2016-06-30', '08:00AM', 3, 12);
+    newRide.driver = "David";
+    allRides.addRide(newRide);
+  }
+  for (var i = 0; i < 3; i++) {
+    var newRide = new Ride("Seattle", "Portland", '2016-06-20', '08:00AM', 3, 12);
+    newRide.driver = "Yuri";
+    allRides.addRide(newRide);
+  }
 
   //Search for a ride
   $("#search").click(function(){
@@ -279,8 +276,6 @@ $(document).ready(function() {
     displayUserInfo(allUsers[driverId]);
 
   });
-
-
 
 
 });// End document.ready

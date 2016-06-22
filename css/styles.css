@@ -1,24 +1,11 @@
-
 #new-user {
   /*display: none;*/
   margin-top: 10%;
 }
 
-/*.search {
-  display: none;
-}*/
-
 #new-ride {
   display: none;
 }
-
-/*.ride-search{
-  padding-top: 50px;
-}*/
-
-/*#ride-results{
-  margin-top: 30px;
-}*/
 
 .jumbotron {
 background-image: url('../img/jumbotron.jpeg');
@@ -76,9 +63,6 @@ display:inline-block;
   color: white;
 }
 
-/*.my-navbar > a {
-  color: white;
-}*/
 .my-navbar > li > a {
   color: white;
   font-family: arial;
@@ -93,7 +77,6 @@ display:inline-block;
   display:inline-block;
   width: auto;
 }
-
 
 html, body {
     height: 90%;
