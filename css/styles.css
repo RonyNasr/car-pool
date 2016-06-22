@@ -1,35 +1,14 @@
-
 #new-user {
-  /*display: none;*/
   margin-top: 10%;
 }
-
-/*.search {
-  display: none;
-}*/
 
 #new-ride {
   display: none;
 }
 
-.glyphicon-pencil {
-  color: purple;
-}
+#ride-list{
 
-/*.ride-search{
-  padding-top: 50px;
-}*/
-
-/*#ride-results{
-  margin-top: 30px;
-}*/
-
-.jumbotron {
-background-image: url('../img/jumbotron.jpeg');
-background-size: cover;
-background-position: center;
-padding-top: 20%;
-padding-bottom: 25%;
+  margin-top: 50px;
 }
 
 .top {
@@ -74,9 +53,6 @@ ol {
   color: white;
 }
 
-/*.my-navbar > a {
-  color: white;
-}*/
 .my-navbar > li > a {
   color: white;
   font-family: arial;
@@ -91,7 +67,6 @@ ol {
   display:inline-block;
   width: auto;
 }
-
 
 html, body {
     height: 90%;
