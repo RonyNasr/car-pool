@@ -13,9 +13,20 @@ function Ride (from, to, date, time, seats, price){
   this.price = price;
 }
 
-//Ride protoype methods
+Ride.prototype.checkRider = function(user){
+  var result =true
+  this.riders.forEach(function (rider){
+    console.log(rider.id,user.id);
+    if (rider.id === user.id){
+      result = false;
+    }
+  });
+  return result;
+}
+
+//Ride prototype methods
 Ride.prototype.addRider = function(user) {
-  if(this.seats > 0){
+  if(this.seats > 0 && this.checkRider(user)){
     this.riders.push(user);
     this.seats--;
     return true;
@@ -24,14 +35,8 @@ Ride.prototype.addRider = function(user) {
   }
 };
 
-Ride.prototype.listRiders = function() {
-  var htmlText = '<ul>';
-  this.riders.forEach(function(rider) {
-    htmlText = htmlText +
-              '<li>' + rider.firstName + ' ' + rider.lastName + '</li>';
-  });
-  htmlText = htmlText + '</ul>';
-  return htmlText;
+Ride.prototype.getRiders = function() {
+  return this.riders;
 };
 
 Ride.prototype.addDriver = function(driverName, allUsersArray) {
@@ -61,6 +66,7 @@ function RideList () {
   this.rides = [];
 };
 
+//RideList prototype methods
 RideList.prototype.addRide = function (ride) {
   this.rides.push(ride);
 };
@@ -87,37 +93,32 @@ RideList.prototype.listRides = function () {
   return this.rides;
 };
 
+// Function to display all rides
 var displayRides = function (rides) {
   var htmlText = "";
-    rides.forEach(function(ride){
+    rides.forEach(function(ride,index){
+    console.log(ride);
     htmlText = htmlText +
     '<div class="row result" id ="' + ride.id + '">' +
     '<p>' +
+    '<span class = "text-danger" id="warning"></span><br><br>'+
     'From: ' + ride.from + '<br>' +
     'To: ' + ride.to + '<br>' +
     'Date: ' + ride.date + '<br>' +
-    'Driver: <span class="driver-name" id=' + ride.driver.id + '">' + ride.driver.username + '</span><br>' +
-    'Passengers: ' + ride.listRiders() + '<br>' +
+    'Time: ' + ride.time + '<br>' +
+    'Driver: <span class="driver-name" id="' + ride.driver[0].id + '">' + ride.driver[0].username + '</span><br>' +
+    'Passengers: ' + listRiders(ride.getRiders()) + '<br>' +
     'Seats Available: ' + ride.seats + '<br>' +
-    '<span class = "btn btn-success join-ride" id="' + ride.id + '">Join Ride</span>'+
+    'Price: ' + ride.price + '<br>' +
+    '<span class = "btn btn-success join-ride" id="' + this.id + '">Join Ride</span>'+
     '   '+
-    // '<span class = "btn btn-danger btn-disabled" id="' + id + '">Leave Ride</span>'+
     '</p>'+
     '</div>';
   });
   return htmlText
 }
 
-var login = function (users, username,password) {
-  var result = false;
-  users.forEach(function(user){
-    if (user.username === username && user.password === password){
-      result = user;
-    }
-  });
-  return result;
-}
-
+// Function to display all info about user
 var displayUserInfo = function (user){
   console.log(user);
   if(!user){
@@ -129,8 +130,8 @@ var displayUserInfo = function (user){
     '<div class="row user" id ="' + user.id + '">' +
     '<p>' +
     'username: ' + user.username + '<br>' +
-    'Name: ' + user.firstname +' ' + user.lastname + '<br>' +
-    'Date: ' + user.age + '<br>' +
+    'Name: ' + user.firstName +' ' + user.lastName + '<br>' +
+    'Age: ' + user.age + '<br>' +
     '<img src="' + user.image + '"><br>' +
     '</p>'+
     '</div>';
@@ -138,24 +139,71 @@ var displayUserInfo = function (user){
   return htmlText
 }
 
+// Function to list riders in a ride
+var listRiders = function (riders){
+  var htmlText ="";
+  if(riders.length){
+  htmlText= '<ul>';
+  riders.forEach(function(rider) {
+    htmlText = htmlText +
+      '<li>' + rider.firstName + ' ' + rider.lastName + '</li>';
+  });
+  htmlText = htmlText + '</ul>';
+}else {
+  htmlText = "None";
+}
+  return htmlText;
+}
+
+// Function to Login
+var login = function (users, username,password) {
+  var result = false;
+  users.forEach(function(user){
+    if (user.username === username && user.password === password){
+      result = user;
+    }
+  });
+  return result;
+}
+
+var listCities = function(city) {
+  var htmlText = ""
+  var cities = ["Portland", "Seattle", "Eugene"];
+  for (var i=0; i<cities.length; i++) {
+    if (city === "all") {
+      htmlText = htmlText +
+      '<option value="' + i + '">' + cities[i] + '</option>';
+    }else if (cities[i] !== city) {
+      htmlText = htmlText +
+      '<option value="' + i + '">' + cities[i] + '</option>';
+    }
+  }
+  return htmlText;
+}
 
 // UI Logic
 $(document).ready(function() {
   var allRides = new RideList();
   var allUsers = [];
   var currentUser = null;
+  $("#ride-from").append(listCities("all"));
+  $("#ride-to").append(listCities("all"));
+  $("#from").append(listCities("all"));
+  $("#to").append(listCities("all"));
 
-  //Sample input for search test
-  for (var i = 0; i < 3; i++) {
-    var newRide = new Ride("Portland", "Seattle", '2016-06-30', '08:00AM', 3, 12);
-    newRide.driver = "David";
-    allRides.addRide(newRide);
-  }
-  for (var i = 0; i < 3; i++) {
-    var newRide = new Ride("Seattle", "Portland", '2016-06-20', '08:00AM', 3, 12);
-    newRide.driver = "Yuri";
-    allRides.addRide(newRide);
-  }
+  // // Sample input for search test
+  // for (var i = 0; i < 3; i++) {
+  //   var newRide = new Ride("Portland", "Seattle", '2016-06-30', '08:00AM', 3, 12);
+  //   newRide.driver = "David";
+  //   allRides.addRide(newRide);
+  //   newRide.id = allRides.rides.length-1;
+  // }
+  // for (var i = 0; i < 3; i++) {
+  //   var newRide = new Ride("Seattle", "Portland", '2016-06-20', '08:00AM', 3, 12);
+  //   newRide.driver = "Yuri";
+  //   allRides.addRide(newRide);
+  //   newRide.id = allRides.rides.length-1;
+  // }
 
   //Search for a ride
   $("#search").click(function(){
@@ -212,6 +260,7 @@ $(document).ready(function() {
     $("#myModal").modal('show');
   });
 
+// New user form submission
   $(".navbar-nav").on("submit","#new-user",function(event) {
     event.preventDefault();
     var username = $("#username").val();
@@ -223,12 +272,17 @@ $(document).ready(function() {
     var newUser = new User(username, password, firstName, lastName, age, image);
     allUsers.push(newUser);
     newUser.id = allUsers.length-1;
+    currentUser = newUser;
     console.log(allUsers);
     $("form").trigger("reset");
     $("#myModal").modal('hide');
     $(".new-user-screen").show();
   });
 
+  $("#post-ride").click(function() {
+    $("#new-ride").show();
+  });
+// New ride form submission
   $("form#new-ride").submit(function(event) {
     event.preventDefault();
     var drivername = $("#ride-driver").val();
@@ -240,26 +294,26 @@ $(document).ready(function() {
     var seats = parseInt($("#ride-seats").val());
     var newRide = new Ride(locationFrom, to, date, time, seats, price);
     newRide.addDriver(drivername, allUsers);
+    newRide.driver[0].id = 0;
     allRides.addRide(newRide);
     $("form").trigger("reset");
     $("#new-ride").hide();
+    $("#ride-list").empty();
+    $("#ride-list").text("Thanks for submitting your ride!");
     console.log(allRides);
   });
 
-  $("#post-ride").click(function() {
-    $("#new-ride").show();
-  });
-
+// Browse all rides
   $("#browse-ride").click(function() {
+    $("#ride-list").empty();
     $("#ride-list").append(displayRides(allRides.listRides()));
   });
-
 
   $("#signup").click(function(){
     $("#register").click();
   });
 
-
+// Login
   $("#login").click (function() {
     var username = $("#usrname").val();
     var password = $("#password").val();
@@ -272,16 +326,39 @@ $(document).ready(function() {
     }
   });
 
+// Join ride
   $("#ride-list").on("click",".join-ride",function () {
     var rideId = this.id;
-    allRides.rides[rideId].addRider(currentUser);
+    console.log(rideId, currentUser);
+    if(allRides.rides[rideId].addRider(currentUser)){
+      $("#ride-list").empty();
+      $("#ride-list").append(displayRides(allRides.listRides()));
+      $("#warning").text("you are now on this ride!!");
+    }else{
+      $("#ride-list").empty();
+      $("#ride-list").append(displayRides(allRides.listRides()));
+      $("#warning").text("Sorry! this ride is full.");
+    }
+    // console.log(res);
   });
 
+// Display driver info
   $("#ride-list").on("click",".driver-name",function () {
     var driverId = this.id;
-    displayUserInfo(allUsers[driverId]);
-
+    console.log(driverId);
+    $("#ride-list").append(displayUserInfo(allUsers[driverId]));
   });
 
+  $("#ride-from").on("change",function () {
+    var rideFrom = $("select#ride-from :selected").text();
+    $("#ride-to").empty();
+    $("#ride-to").append(listCities(rideFrom));
+  })
+
+  $("#ride-to").on("change",function () {
+    var rideTo = $("select#ride-to :selected").text();
+    $("#ride-from").empty();
+    $("#ride-from").append(listCities(rideTo));
+  })
 
 });// End document.ready

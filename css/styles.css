@@ -1,14 +1,20 @@
 #new-user {
   margin-top: 10%;
+  color: darkgrey;
 }
 
 #new-ride {
   display: none;
 }
 
-#ride-list{
 
+#ride-list {
   margin-top: 50px;
+}
+
+.driver-name:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .top {
