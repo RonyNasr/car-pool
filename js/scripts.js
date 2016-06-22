@@ -98,21 +98,45 @@ var displayRides = function (rides) {
   var htmlText = "";
     rides.forEach(function(ride,index){
     htmlText = htmlText +
-    '<div class="row result" id ="' + ride.id + '">' +
-    '<p>' +
-    '<span class = "text-danger" id="warning"></span><br><br>'+
-    'From: ' + ride.from + '<br>' +
-    'To: ' + ride.to + '<br>' +
-    'Date: ' + ride.date + '<br>' +
-    'Time: ' + ride.time + '<br>' +
-    'Driver: <span class="driver-name" id="' + ride.driver[0].id + '">' + ride.driver[0].username + '</span><br>' +
-    'Passengers: ' + listRiders(ride.getRiders()) + '<br>' +
-    'Seats Available: ' + ride.seats + '<br>' +
-    'Price: ' + ride.price + '<br>' +
-    '<span class = "btn btn-success join-ride" id="' + ride.id + '">Join Ride</span>'+
-    '   '+
-    '</p>'+
-    '</div>';
+
+    //for reference only
+
+    // '<div class="row result" id ="' + ride.id + '">' +
+    // '<p>' +
+    // '<span class = "text-danger" id="warning"></span><br><br>'+
+    // 'From: ' + ride.from + '<br>' +
+    // 'To: ' + ride.to + '<br>' +
+    // 'Date: ' + ride.date + '<br>' +
+    // 'Time: ' + ride.time + '<br>' +
+    // 'Driver: <span class="driver-name" id="' + ride.driver[0].id + '">' + ride.driver[0].username + '</span><br>' +
+    // 'Passengers: ' + listRiders(ride.getRiders()) + '<br>' +
+    // 'Seats Available: ' + ride.seats + '<br>' +
+    // 'Price: ' + ride.price + '<br>' +
+    // '<span class = "btn btn-success join-ride" id="' + ride.id + '">Join Ride</span>'+
+    // '   '+
+    // '</p>'+
+    // '</div>';
+
+    '<div class="row-result" id ="' + ride.id + '">' +
+      '<div class="col-md-3">' +
+        'Driver: <span class="driver-name" id=' + ride.driver[0].id + '">' + ride.driver[0].username + '</span><br>' +
+      '</div>' +
+      '<div class="col-md-4">' +
+        ride.from  + ' <i class="long arrow right icon"></i>' +
+        ride.to +
+        '<br>' +
+        ride.date + ' at ' + ride.time +
+        '</div>' +
+        '<div class="col-md-2">' +
+          'Price: $' + ride.price +
+          '<br>' +
+          ride.seats + ' seats left' +
+        '</div>' +
+        '<div class="col-md-2">' +
+          '<span class = "btn btn-success join-ride" id="' + ride.id + '">Join Ride</span>'+
+        '</div>' +
+      '</div>';
+
   });
   return htmlText
 }
@@ -184,23 +208,28 @@ $(document).ready(function() {
   var allRides = new RideList();
   var allUsers = [];
   var currentUser = null;
+
   $("#ride-from").append(listCities("all"));
   $("#ride-to").append(listCities("all"));
   $("#from").append(listCities("all"));
   $("#to").append(listCities("all"));
 
-  // // Sample input for search test
+
+
+  // //Sample input for search test
   // for (var i = 0; i < 3; i++) {
   //   var newRide = new Ride("Portland", "Seattle", '2016-06-30', '08:00AM', 3, 12);
   //   newRide.driver = "David";
   //   allRides.addRide(newRide);
   //   newRide.id = allRides.rides.length-1;
+
   // }
   // for (var i = 0; i < 3; i++) {
   //   var newRide = new Ride("Seattle", "Portland", '2016-06-20', '08:00AM', 3, 12);
   //   newRide.driver = "Yuri";
   //   allRides.addRide(newRide);
   //   newRide.id = allRides.rides.length-1;
+
   // }
 
   //Search for a ride
@@ -250,7 +279,7 @@ $(document).ready(function() {
                                           '<label for="image">Image URL:</label>' +
                                           '<input type="text" class="form-control" id="image">' +
                                         '</div>' +
-                                        '<button type="submit" name="button" class="btn" id="blah">Submit</button>' +
+                                        '<button type="submit" name="button" class="btn" id="new-user-submit">SIGN UP</button>' +
                                       '</form>' +
                                   '</div>' +
                                 '</div>' +

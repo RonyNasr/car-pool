@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700italic|Ubuntu' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" type="text/css" href="Semantic-UI-master/dist/semantic.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -30,8 +31,8 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right my-navbar">
-        <li id="register"><a href="#">Register</a></li>
-        <li id="sign-in" class=""><a href="#">Sign in</a></li>
+        <li id="register"><a href="#">SIGN UP</a></li>
+        <li id="sign-in" class=""><a href="#">SIGN IN</a></li>
       </ul>
     </div>
   </div>
@@ -40,10 +41,10 @@
       <div class="container container-1">
         <div class="flex">
           <h1>Find great rides between cities</h1>
-          <h2>We connect travellers to drivers with empty seats.</h2>
-          <br>
           <div>
+            <h2>CarCool connects travellers to drivers with empty seats.</h2>
           </div>
+          <br>
           <br>
           <div class="container " id="search-box">
             <div class="row ride-search">
@@ -59,7 +60,7 @@
                 <label for="date">Date:</label>
                 <input id="date" class="form-control top" type="date">
               </div>
-            <button class ="btn btn-default" type="button" name="search-btn" id="search">Search</button>
+            <button class ="btn btn-success" type="button" name="search-btn" id="search">SEARCH</button>
           </div>
         </div>
     </section>
@@ -114,7 +115,7 @@
           <label for="ride-seats">Available seats:</label>
           <input type="number" class="form-control" id="ride-seats">
         </div>
-        <button type="submit" name="button" class="btn">Submit</button>
+        <button id="new-ride-submit" type="submit" name="button" class="btn">Submit</button>
       </form>
     </div>
 
@@ -134,17 +135,17 @@
             <h2>MEET AWESOME PEOPLE</h2>
           </div>
         </div>
+        <hr>
         <div class="row instructions">
           <h2>HOW TO RIDE</h2>
-          <div class="col-md-6">
-            <img src="img/medium-square-400-400.jpg" alt="" />
+          <div class="col-md-4">
+            <p>1.<br>Choose a trip based on departure time and price.</p>
           </div>
-          <div class="col-md-6">
-            <ol>
-              <li>Choose a trip based on departure time and price.</li>
-              <li>Request to ride and wait for the driver to confirm.</li>
-              <li>Pay the driver after arriving at your destination.</li>
-            </ol>
+          <div class="col-md-4">
+            <p>2.<br>Request to ride and wait for the driver to confirm.</p>
+          </div>
+          <div class="col-md-4">
+            <p>3.<br>Pay the driver after arriving at your destination.</p>
           </div>
         </div>
       </div>
@@ -155,7 +156,7 @@
           <div class="flex">
             <h1>JOIN NOW AND START SAVING</h1>
             <br>
-            <button id="signup" class="btn btn-default">SIGN UP</button>
+            <button id="signup" class="btn btn-lg btn-default">SIGN UP</button>
             <!-- <button class="btn btn-default">PASSENGER</button> -->
           </div>
         </div>
