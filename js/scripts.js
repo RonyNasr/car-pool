@@ -145,17 +145,17 @@ $(document).ready(function() {
   var allUsers = [];
   var currentUser = null;
 
-  //Sample input for search test
-  for (var i = 0; i < 3; i++) {
-    var newRide = new Ride("Portland", "Seattle", '2016-06-30', '08:00AM', 3, 12);
-    newRide.driver = "David";
-    allRides.addRide(newRide);
-  }
-  for (var i = 0; i < 3; i++) {
-    var newRide = new Ride("Seattle", "Portland", '2016-06-20', '08:00AM', 3, 12);
-    newRide.driver = "Yuri";
-    allRides.addRide(newRide);
-  }
+  // //Sample input for search test
+  // for (var i = 0; i < 3; i++) {
+  //   var newRide = new Ride("Portland", "Seattle", '2016-06-30', '08:00AM', 3, 12);
+  //   newRide.driver = "David";
+  //   allRides.addRide(newRide);
+  // }
+  // for (var i = 0; i < 3; i++) {
+  //   var newRide = new Ride("Seattle", "Portland", '2016-06-20', '08:00AM', 3, 12);
+  //   newRide.driver = "Yuri";
+  //   allRides.addRide(newRide);
+  // }
 
   //Search for a ride
   $("#search").click(function(){
@@ -204,7 +204,7 @@ $(document).ready(function() {
                                           '<label for="image">Image URL:</label>' +
                                           '<input type="text" class="form-control" id="image">' +
                                         '</div>' +
-                                        '<button type="submit" name="button" class="btn" id="blah">Submit</button>' +
+                                        '<button type="submit" name="button" class="btn" id="new-user-submit">SIGN UP</button>' +
                                       '</form>' +
                                   '</div>' +
                                 '</div>' +

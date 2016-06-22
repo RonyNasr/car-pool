@@ -1,5 +1,10 @@
+body {
+  font-family: 'Ubuntu', sans-serif;
+}
+
 #new-user {
   margin-top: 10%;
+  color: black;
 }
 
 #new-ride {
@@ -20,13 +25,30 @@ display:inline-block;
   margin-top: -100px;
   text-align: center;
   width: 50%;
+  font-size: 1.5em;
+}
+
+#search, #signup, #new-user-submit, #new-ride-submit {
+  background-color: #5BC0BE;
+  border: none;
+  color: white;
+}
+
+hr {
+  border: 0;
+  border-bottom: 1px dashed #ccc;
+  background: #999;
+}
+
+select {
+  min-width: 150px;
 }
 
 ol {
 	list-style-type:decimal;
 }
 
-#register:hover {
+#register:hover, #signup:hover, #new-user-submit:hover, #new-ride-submit {
   text-decoration: underline;
   cursor: pointer;
 }
@@ -55,11 +77,12 @@ ol {
 
 .my-navbar > li > a {
   color: white;
-  font-family: arial;
+  font-size: 20px;
 }
 .my-navbar > li > a:hover {
   text-decoration: underline;
-  background-color:
+  background-color: transparent;
+  /*color: #999999;*/
 }
 
 #search-box {
@@ -72,22 +95,20 @@ html, body {
     height: 90%;
 }
 
+h1, h2, h3 {
+  font-family: 'Lora', serif;
+}
+
 h1 {
   font-size: 4em;
   font-weight: 800;
   text-align: center;
-  font-family: Arial;
   padding: .5em;
 }
 
 h2 {
   font-size: 1.9em;
   text-align: center;
-  font-family: Arial;
-}
-
-h3 {
-  font-family: Arial;
 }
 
 .content {
@@ -96,6 +117,9 @@ h3 {
 
 .benefits {
   text-align: center;
+  font-weight: bold;
+  padding-bottom: 15px;
+  padding-top: -5px;
 }
 
 .benefits h2 {
@@ -104,7 +128,13 @@ h3 {
 }
 
 .instructions {
+  padding-top: 2%;
+  text-align: center;
+}
+
+.instructions p {
   padding-top: 5%;
+  font-size: 1.5em;
 }
 
 .container-1 {
