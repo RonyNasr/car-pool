@@ -140,6 +140,7 @@ $(document).ready(function() {
     $("#ride-results").append(allRides.listRides(searchResults));
   });
 
+  // User registration
   $("#register").click(function() {
     $(".navbar-default").append('<div id="myModal" class="modal fade" tabindex="-1"role="dialog">' +
                                 '<div class="modal-dialog">' +
