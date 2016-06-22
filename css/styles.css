@@ -28,6 +28,11 @@ padding-top: 20%;
 padding-bottom: 25%;
 }
 
+#ride-list{
+
+  margin-top: 50px;
+}
+
 h1 {
   text-align: center;
 }

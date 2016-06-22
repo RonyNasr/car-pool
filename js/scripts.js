@@ -47,9 +47,10 @@ Ride.prototype.addDriver = function(driverName, allUsersArray) {
 };
 
 //User constructor
-function User (username, firstName, lastName, age, image){
+function User (username, password, firstName, lastName, age, image){
   this.id =null;
   this.username = username;
+  this.password = password;
   this.firstName = firstName;
   this.lastName = lastName;
   this.age = age;
@@ -76,62 +77,88 @@ RideList.prototype.search = function (from, to, date) {
   for (var i = 0; i < this.rides.length; i++) {
     if (!date){
       if (this.rides[i].from === from && this.rides[i].to === to){
-        result.push(this.rides[i].id);
+        result.push(this.rides[i]);
       }
     } else if (this.rides[i].from === from && this.rides[i].to === to && this.rides[i].date === date) {
-      result.push(this.rides[i].id);
+      result.push(this.rides[i]);
     }
   }
   return result;
 };
 
-RideList.prototype.listRides = function (idList) {
-  var htmlText = "";
-  var list = this;
-  idList.forEach(function(id){
-    htmlText = htmlText +
-    '<div class="row result" id ="' + id + '">' +
-      '<p>' +
-        'From: ' + list.rides[id].from + '<br>' +
-        'To: ' + list.rides[id].to + '<br>' +
-        'Date: ' + list.rides[id].date + '<br>' +
-        'Driver: ' + list.rides[id].driver+ '<br>' +
-        'Passengers : ' + list.rides[id].listRiders() + '<br>' +
-        '<span class = "btn btn-success" id="' + id + '">Join Ride</span>'+
-        '   '+
-        '<span class = "btn btn-danger btn-disabled" id="' + id + '">Leave Ride</span>'+
-      '</p>'+
-    '</div>';
-  });
-return htmlText
+RideList.prototype.listRides = function () {
+  return this.rides;
 };
 
-RideList.prototype.listAllRides = function() {
+var displayRides = function (rides) {
   var htmlText = "";
-  this.rides.forEach(function(ride,index){
+    rides.forEach(function(ride){
     htmlText = htmlText +
-    '<div class="row result" id ="' + index + '">' +
-      '<p>' +
-        'From: ' + ride.from + '<br>' +
-        'To: ' + ride.to + '<br>' +
-        'Date: ' + ride.date + '<br>' +
-        'Time: ' + ride.time + '<br>' +
-        'Price: ' + ride.price + '<br>' +
-        'Driver: ' + ride.driver + '<br>' +
-        'Passengers : ' + ride.listRiders() + '<br>' +
-        '<span class = "btn btn-success" id="' + index + '">Join Ride</span>' +
-        '   ' +
-        '<span class = "btn btn-danger btn-disabled" id="' + index + '">Leave Ride</span>'+
-      '</p>'+
+    '<div class="row result" id ="' + ride.id + '">' +
+    '<p>' +
+    'From: ' + ride.from + '<br>' +
+    'To: ' + ride.to + '<br>' +
+    'Date: ' + ride.date + '<br>' +
+    'Driver: <span class="driver-name" id=' + ride.driver.id + '">' + ride.driver.username + '</span><br>' +
+    'Passengers: ' + ride.listRiders() + '<br>' +
+    'Seats Available: ' + ride.seats + '<br>' +
+    '<span class = "btn btn-success join-ride" id="' + ride.id + '">Join Ride</span>'+
+    '   '+
+    // '<span class = "btn btn-danger btn-disabled" id="' + id + '">Leave Ride</span>'+
+    '</p>'+
     '</div>';
   });
-return htmlText
-};
+  return htmlText
+}
+
+var login = function (users, username,password) {
+  var result = false;
+  users.forEach(function(user){
+    if (user.username === username && user.password === password){
+      result = user;
+    }
+  });
+  return result;
+}
+
+var displayUserInfo = function (user){
+  console.log(user);
+  if(!user){
+    alert("user doesn't exist!!")
+  }else{
+    var htmlText = "";
+    htmlText = htmlText +
+
+    '<div class="row user" id ="' + user.id + '">' +
+    '<p>' +
+    'username: ' + user.username + '<br>' +
+    'Name: ' + user.firstname +' ' + user.lastname + '<br>' +
+    'Date: ' + user.age + '<br>' +
+    '<img src="' + user.image + '"><br>' +
+    '</p>'+
+    '</div>';
+  }
+  return htmlText
+}
+
 
 // UI Logic
 $(document).ready(function() {
   var allRides = new RideList();
   var allUsers = [];
+  var currentUser = null;
+
+  //Sample input for search test
+  // for (var i = 0; i < 3; i++) {
+  //   var newRide = new Ride("Portland", "Seattle", '2016-06-30', '08:00AM', 3, 12);
+  //   newRide.driver = "David";
+  //   allRides.addRide(newRide);
+  // }
+  // for (var i = 0; i < 3; i++) {
+  //   var newRide = new Ride("Seattle", "Portland", '2016-06-20', '08:00AM', 3, 12);
+  //   newRide.driver = "Yuri";
+  //   allRides.addRide(newRide);
+  // }
 
   //Search for a ride
   $("#search").click(function(){
@@ -139,8 +166,10 @@ $(document).ready(function() {
     var inputtedTo = $("#to :selected").val();
     var inputtedDate = $("#date").val();
     var searchResults = allRides.search(inputtedFrom,inputtedTo,inputtedDate);
-    $("#rides-list").empty();
-    $("#rides-list").append(allRides.listRides(searchResults));
+
+    $("#ride-list").empty();
+    $("#ride-list").append(displayRides(searchResults));
+
   });
 
   // User registration
@@ -157,6 +186,10 @@ $(document).ready(function() {
                                         '<div class="form-group">' +
                                           '<label for="username">Username:</label>' +
                                           '<input type="text" class="form-control" id="username">' +
+                                        '</div>' +
+                                        '<div class="form-group">' +
+                                          '<label for="password">Password:</label>' +
+                                          '<input type="password" class="form-control" id="password">' +
                                         '</div>' +
                                         '<div class="form-group">' +
                                           '<label for="firstname">First Name:</label>' +
@@ -185,11 +218,12 @@ $(document).ready(function() {
   $(".navbar-nav").on("submit","#new-user",function(event) {
     event.preventDefault();
     var username = $("#username").val();
+    var password = $("#password").val();
     var firstName = $("#firstname").val();
     var lastName = $("#lastname").val();
     var age = $("#age").val();
     var image = $("#image").val();
-    var newUser = new User(username, firstName, lastName, age, image);
+    var newUser = new User(username, password, firstName, lastName, age, image);
     allUsers.push(newUser);
     newUser.id = allUsers.length-1;
     console.log(allUsers);
@@ -220,6 +254,33 @@ $(document).ready(function() {
   });
 
   $("#browse-ride").click(function() {
-    $("#rides-list").append(allRides.listAllRides());
+    $("#ride-list").append(displayRides(allRides.listRides()));
   });
-});
+
+  $("#login").click (function() {
+    var username = $("#usrname").val();
+    var password = $("#password").val();
+    var loginResult = login(allUsers, username,password);
+    if (loginResult){
+      currentUser = login(loginResult);
+      //Greet user and open user homepage
+    }else{
+      $("#login-fail").text("wrong username and/or password.");
+    }
+  });
+
+  $("#ride-list").on("click",".join-ride",function () {
+    var rideId = this.id;
+    allRides.rides[rideId].addRider(currentUser);
+  });
+
+  $("#ride-list").on("click",".driver-name",function () {
+    var driverId = this.id;
+    displayUserInfo(allUsers[driverId]);
+
+  });
+
+
+
+
+});// End document.ready
