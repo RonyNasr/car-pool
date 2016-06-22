@@ -222,4 +222,8 @@ $(document).ready(function() {
   $("#browse-ride").click(function() {
     $("#rides-list").append(allRides.listAllRides());
   });
+
+  $("#signup").click(function(){
+    $("#register").click();
+  });
 });
