@@ -178,13 +178,13 @@ var listRiders = function (riders){
 }
 
 // Function to Login
-var login = function (users, username,password) {
+var login = function (users, username, password) {
   var result = false;
-  users.forEach(function(user){
-    if (user.username === username && user.password === password){
-      result = user;
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].username === username && users[i].password === password){
+      result = users[i];
     }
-  });
+  }
   return result;
 }
 
@@ -305,6 +305,38 @@ $(document).ready(function() {
     $(".new-user-screen").show();
   });
 
+  // sign in modal
+  $("#sign-in").click(function() {
+    $(".navbar-nav").append('<div id="sign-in-modal" class="modal fade"   tabindex="-1"role="dialog">' +
+                                '<div class="modal-dialog">' +
+                                  '<div class="modal-content">' +
+                                    '<div class="modal-header">' +
+                                      '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                                      '<h4 class="modal-title">Create a new account</h4>' +
+                                    '</div>' +
+                                    '<div class="modal-body">' +
+                                      '<span id="login-fail text-danger"></span>' +
+                                      '<form id="user-sign-in">' +
+                                        '<div class="form-group">' +
+                                          '<label for="username">Username:</label>' +
+                                          '<input type="text" class="form-control" id="sign-in-username">' +
+                                        '</div>' +
+                                        '<div class="form-group">' +
+                                          '<label for="password">Password:</label>' +
+                                          '<input type="password" class="form-control" id="sign-in-password">' +
+                                        '</div>' +
+                                        '<button type="submit" name="button" class="btn" id="sign-in-submit">SIGN IN</button>' +
+                                      '</form>' +
+                                  '</div>' +
+                                '</div>' +
+                              '</div>');
+    $("#sign-in-modal").modal('show');
+  });
+
+
+
+
+
   $("#post-ride").click(function() {
     $("#new-ride").show();
   });
@@ -340,16 +372,21 @@ $(document).ready(function() {
   });
 
 // Login
-  $("#login").click (function() {
-    var username = $("#usrname").val();
-    var password = $("#password").val();
-    var loginResult = login(allUsers, username,password);
+  $(".navbar-nav").on("click","#sign-in-submit",function(event) {
+    var signInUsername = $("#sign-in-username").val();
+    var signInPassword = $("#sign-in-password").val();
+    console.log(signInUsername,signInPassword);
+    var loginResult = login(allUsers, signInUsername,signInPassword);
     if (loginResult){
-      currentUser = login(loginResult);
+      currentUser = loginResult;
+      $("form").trigger("reset");
+      $("#sign-in-modal").modal('hide');
+      $(".new-user-screen").show();
       //Greet user and open user homepage
     }else{
       $("#login-fail").text("wrong username and/or password.");
     }
+    console.log(currentUser);
   });
 
 // Join ride

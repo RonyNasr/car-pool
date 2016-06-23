@@ -2,7 +2,7 @@ body {
   font-family: 'Ubuntu', sans-serif;
 }
 
-#new-user {
+#new-user, #user-sign-in {
   margin-top: 10%;
   color: darkgrey;
 }
@@ -33,7 +33,7 @@ display:inline-block;
   font-size: 1.5em;
 }
 
-#search, #signup, #new-user-submit, #new-ride-submit {
+#search, #signup, #new-user-submit, #new-ride-submit, #sign-in-submit {
   background-color: #5BC0BE;
   border: none;
   color: white;
@@ -81,13 +81,13 @@ ol {
 }
 
 .logo {
-  width: 80px;
+  width: 100px;
   height: auto;
 }
 
 .my-navbar > li > a {
   color: white;
-  font-size: 20px;
+  font-size: 16px;
 }
 .my-navbar > li > a:hover {
   text-decoration: underline;
