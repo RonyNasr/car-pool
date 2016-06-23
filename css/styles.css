@@ -27,11 +27,17 @@ display:inline-block;
 }
 
 #search-box {
-  margin-top: -100px;
-  text-align: center;
-  width: 50%;
+  /*display:inline-block;*/
+  /*text-align: center;*/
+  width: auto;
   font-size: 1.5em;
+
 }
+/*#search-box {
+  width: 50%;
+  display:inline-block;
+  width: auto;
+}*/
 
 #search, #signup, #new-user-submit, #new-ride-submit, #sign-in-submit {
   background-color: #5BC0BE;
@@ -75,9 +81,10 @@ ol {
   z-index: 1;
 }
 
-.my-navbar {
+.navbar {
   padding-right: 15px;
   color: white;
+  background-color: rgba(0,0,0, 0);
 }
 
 .logo {
@@ -89,15 +96,10 @@ ol {
   color: white;
   font-size: 16px;
 }
+
 .my-navbar > li > a:hover {
   text-decoration: underline;
   background-color: transparent;
-}
-
-#search-box {
-  width: 50%;
-  display:inline-block;
-  width: auto;
 }
 
 html, body {
