@@ -92,8 +92,6 @@ RideList.prototype.listRides = function () {
   return this.rides;
 };
 
-
-
 // Function to display all rides
 var displayRides = function (rides) {
   var htmlText = "";
@@ -340,10 +338,6 @@ $(document).ready(function() {
                               '</div>');
     $("#sign-in-modal").modal('show');
   });
-
-
-
-
 
   $("#post-ride").click(function() {
     $("#new-ride").show();

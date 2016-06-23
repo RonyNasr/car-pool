@@ -1,19 +1,81 @@
-body {
+body, html {
   font-family: 'Ubuntu', sans-serif;
+  height: 80%;
 }
 
-/*h1, h2 {
-  color: #74546A;
-}*/
+.navbar {
+  padding-right: 15px;
+  color: white;
+  background-color: rgba(0,0,0, 0);
+}
+
+.my-navbar > li > a {
+  color: white;
+  font-size: 16px;
+}
+
+.my-navbar > li > a:hover {
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+h1 {
+  font-size: 4em;
+  font-weight: 800;
+  text-align: center;
+  padding: .5em;
+}
+
+h1, h2, h3 {
+  font-family: 'Lora', serif;
+}
+
+h2 {
+  font-size: 1.9em;
+  text-align: center;
+}
 
 #new-user, #user-sign-in {
   margin-top: 10%;
   color: darkgrey;
 }
 
+#search-box {
+  width: auto;
+  font-size: 1.5em;
+  padding: 25px;
+}
+
+.top {
+width:auto;
+display:inline-block;
+}
+
+#search, #signup, #new-user-submit, #new-ride-submit, #sign-in-submit {
+  background-color: #5BC0BE;
+  border: none;
+  color: white;
+}
+
+#register:hover, #signup:hover, #new-user-submit:hover, #new-ride-submit {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 #new-ride {
   display: none;
   padding-top: 20px;
+}
+
+.new-user-screen {
+  display: none;
+  margin-top: 20px;
+  color: white;
 }
 
 .new-user-screen button {
@@ -22,7 +84,6 @@ body {
   margin-left: 60px;
   border: none;
 }
-
 
 #ride-list {
   margin: 50px;
@@ -33,36 +94,6 @@ body {
   text-decoration: underline;
   cursor: pointer;
 }
-
-.top {
-width:auto;
-display:inline-block;
-}
-
-#search-box {
-  /*display:inline-block;*/
-  /*text-align: center;*/
-  width: auto;
-  font-size: 1.5em;
-  padding:
-  /*color: #DCDCDD;*/
-
-}
-/*#search-box {
-  width: 50%;
-  display:inline-block;
-  width: auto;
-}*/
-
-#search, #signup, #new-user-submit, #new-ride-submit, #sign-in-submit {
-  background-color: #5BC0BE;
-  border: none;
-  color: white;
-}
-
-/*#post-ride {
-  color: white;
-}*/
 
 hr {
   border: 0;
@@ -78,17 +109,6 @@ ol {
 	list-style-type:decimal;
 }
 
-#register:hover, #signup:hover, #new-user-submit:hover, #new-ride-submit {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.new-user-screen {
-  display: none;
-  margin-top: 20px;
-  color: white;
-}
-
 .row-result {
   padding: 50px;
   font-size: 18px;
@@ -96,55 +116,6 @@ ol {
 
 .glyphicon {
   font-size: 50px;
-}
-
-#rides-list {
-  margin-left: 10%;
-}
-
-.modal-backdrop {
-  z-index: 1;
-}
-
-.navbar {
-  padding-right: 15px;
-  color: white;
-  background-color: rgba(0,0,0, 0);
-}
-
-.logo {
-  width: 100px;
-  height: auto;
-}
-
-.my-navbar > li > a {
-  color: white;
-  font-size: 16px;
-}
-
-.my-navbar > li > a:hover {
-  text-decoration: underline;
-  background-color: transparent;
-}
-
-html, body {
-    height: 80%;
-}
-
-h1, h2, h3 {
-  font-family: 'Lora', serif;
-}
-
-h1 {
-  font-size: 4em;
-  font-weight: 800;
-  text-align: center;
-  padding: .5em;
-}
-
-h2 {
-  font-size: 1.9em;
-  text-align: center;
 }
 
 .content {
@@ -170,11 +141,6 @@ h2 {
   text-decoration: underline;
 }
 
-.number {
-  font-size: 36px;
-  font-weight: bolder;
-}
-
 .instructions p {
   padding-top: 5%;
   font-size: 1.5em;
@@ -191,6 +157,10 @@ h2 {
 .testimonial {
   font-style: italic;
   font-size: 1.2em;
+}
+
+.modal-backdrop {
+  z-index: 1;
 }
 
 .container-1 {
