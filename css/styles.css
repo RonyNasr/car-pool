@@ -42,7 +42,7 @@ display:inline-block;
 }
 
 #search, #signup, #new-user-submit, #new-ride-submit, #sign-in-submit {
-  background-color: #5BC0BE;
+  background-color: rgba(0,181,173,1);
   border: none;
   color: white;
 }
@@ -165,7 +165,7 @@ h2 {
   height: 150px;
   width: 150px;
   border-radius: 50%;
-  border: 3px solid #5BC0BE;
+  border: 3px solid rgba(0,181,173,1);
   margin-bottom: 20px;
 }
 

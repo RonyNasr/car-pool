@@ -20,6 +20,9 @@ Ride.prototype.checkRider = function(user) {
       result = false;
     }
   });
+  if(this.driver.id === user.id){
+    result = false;
+  }
   return result;
 }
 
@@ -197,18 +200,31 @@ var listCities = function(city) {
   return htmlText;
 }
 
+//populate time dropdown
+var listTimes = function (){
+  var htmlText = ""
+  for (var i = 0; i < 24; i++) {
+    htmlText = htmlText +
+    (i < 10)? '<option value="' + i + '">0' + i + ':00</option>'+
+              '<option value="' + i + '">0' + i + ':30</option>'
+            : '<option value="' + i + '">'  + i + ':00</option>'+
+              '<option value="' + i + '">'  + i + ':30</option>';
+  }
+  return htmlText;
+}
+
 // UI Logic
 $(document).ready(function() {
   //Change Navbar transparency
   $(document).on('scroll', function (e) {
-       var alpha = $(document).scrollTop() / 900;
-       $('.navbar').css('background-color', 'rgba(0,0,0,' + alpha + ')');
+       var alpha = $(document).scrollTop() / 800;
+       $('.navbar').css('background-color', 'rgba(0,181,173,' + alpha + ')');
   });
 
   var allRides = new RideList();
   var allUsers = [];
   var currentUser = null;
-
+  $("#ride-time").append(listTimes());
   $("#ride-from").append(listCities("all"));
   $("#ride-to").append(listCities("all"));
   $("#from").append(listCities("all"));
@@ -253,7 +269,7 @@ $(document).ready(function() {
                                       '</div>' +
                                       '<div class="form-group">' +
                                         '<label for="age">Age:</label>' +
-                                        '<input type="number" class="form-control" id="age">' +
+                                        '<input type="number" min="18" max="99" class="form-control" id="age">' +
                                       '</div>' +
                                       '<div class="form-group">' +
                                         '<label for="image">Image URL:</label>' +
@@ -291,6 +307,7 @@ $(document).ready(function() {
 
   // sign in modal
   $("#sign-in").click(function() {
+    $("#login-fail").empty();
     $(".navbar-nav").append('<div id="sign-in-modal" class="modal fade"   tabindex="-1"role="dialog">' +
                                 '<div class="modal-dialog">' +
                                   '<div class="modal-content">' +
@@ -299,7 +316,7 @@ $(document).ready(function() {
                                       '<h4 class="modal-title">Create a new account</h4>' +
                                     '</div>' +
                                     '<div class="modal-body">' +
-                                      '<span id="login-fail class="text-danger"></span>' +
+                                      '<span id="login-fail" class="text-danger"></span>' +
                                       '<form id="user-sign-in">' +
                                         '<div class="form-group">' +
                                           '<label for="username">Username:</label>' +
@@ -329,7 +346,7 @@ $(document).ready(function() {
     var locationFrom = $("#ride-from :selected").text();
     var to = $("#ride-to :selected").text();
     var date = $("#ride-date").val();
-    var time = $("#ride-time").val();
+    var time = $("#ride-time :selected").text();
     var price = parseInt($("#ride-price").val());
     var seats = parseInt($("#ride-seats").val());
     var newRide = new Ride(locationFrom, to, date, time, seats, price);
@@ -361,6 +378,7 @@ $(document).ready(function() {
     var signInPassword = $("#sign-in-password").val();
     console.log(signInUsername,signInPassword);
     var loginResult = login(allUsers, signInUsername,signInPassword);
+    console.log(loginResult);
     if (loginResult){
       currentUser = loginResult;
       $("form").trigger("reset");
@@ -369,7 +387,7 @@ $(document).ready(function() {
       $("#ride-list").empty();
       $("#ride-list").append('<span id="greeting-span">Hello ' + currentUser.firstName + '!</span>')
       //Greet user and open user homepage
-    }else{
+    } else {
       $("#login-fail").text("wrong username and/or password.");
     }
   });
