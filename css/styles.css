@@ -1,5 +1,43 @@
-body {
-  font-family: 'Ubuntu', sans-serif;
+body, html {
+  font-family: 'Nunito', sans-serif;
+  height: 80%;
+}
+
+.navbar {
+  padding-right: 15px;
+  color: white;
+  background-color: rgba(0,0,0, 0);
+}
+
+.my-navbar > li > a {
+  color: white;
+  font-size: 16px;
+}
+
+.my-navbar > li > a:hover {
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+h1 {
+  font-size: 4.5em;
+  font-weight: 800;
+  text-align: center;
+  padding: .5em;
+}
+
+h1, h2, h3 {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h2 {
+  font-size: 2em;
+  text-align: center;
 }
 
 #new-user, #user-sign-in {
@@ -7,9 +45,37 @@ body {
   color: darkgrey;
 }
 
+#search-box {
+  width: auto;
+  font-size: 1.5em;
+  padding: 25px;
+}
+
+.top {
+width:auto;
+display:inline-block;
+}
+
+#search, #signup, #new-user-submit, #new-ride-submit, #sign-in-submit {
+  background-color: #5BC0BE;
+  border: none;
+  color: white;
+}
+
+#register:hover, #signup:hover, #new-user-submit:hover, #new-ride-submit {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 #new-ride {
   display: none;
   padding-top: 20px;
+}
+
+.new-user-screen {
+  display: none;
+  margin-top: 20px;
+  color: white;
 }
 
 .new-user-screen button {
@@ -28,6 +94,7 @@ body {
   text-decoration: underline;
   cursor: pointer;
 }
+
 
 .top {
 width:auto;
@@ -61,16 +128,6 @@ ol {
 	list-style-type:decimal;
 }
 
-#register:hover, #signup:hover, #new-user-submit:hover, #new-ride-submit {
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.new-user-screen {
-  display: none;
-  margin-top: 20px;
-}
-
 .row-result {
   padding: 50px;
   font-size: 18px;
@@ -78,55 +135,6 @@ ol {
 
 .glyphicon {
   font-size: 50px;
-}
-
-#rides-list {
-  margin-left: 10%;
-}
-
-.modal-backdrop {
-  z-index: 1;
-}
-
-.navbar {
-  padding-right: 15px;
-  color: white;
-  background-color: rgba(0,0,0, 0);
-}
-
-.logo {
-  width: 100px;
-  height: auto;
-}
-
-.my-navbar > li > a {
-  color: white;
-  font-size: 16px;
-}
-
-.my-navbar > li > a:hover {
-  text-decoration: underline;
-  background-color: transparent;
-}
-
-html, body {
-    height: 80%;
-}
-
-h1, h2, h3 {
-  font-family: 'Lora', serif;
-}
-
-h1 {
-  font-size: 4em;
-  font-weight: 800;
-  text-align: center;
-  padding: .5em;
-}
-
-h2 {
-  font-size: 1.9em;
-  text-align: center;
 }
 
 .content {
@@ -143,17 +151,13 @@ h2 {
 .benefits h2 {
   padding-top: 30px;
   font-size: 1.5em;
+  color: black;
 }
 
 .instructions {
   padding-top: 2%;
   text-align: center;
   text-decoration: underline;
-}
-
-.number {
-  font-size: 36px;
-  font-weight: bolder;
 }
 
 .instructions p {
@@ -172,6 +176,10 @@ h2 {
 .testimonial {
   font-style: italic;
   font-size: 1.2em;
+}
+
+.modal-backdrop {
+  z-index: 1;
 }
 
 .container-1 {
@@ -201,22 +209,17 @@ section.parallax {
     Parralax blocks
 **************************************/
 section.parallax.background-1 {
-    background-image: url("../img/1.jpg");
+    background-image: url("../img/1-2.jpg");
     height: 100%;
 }
 
 section.parallax.background-2 {
-    background-image: url("../img/2.jpg");
+    background-image: url("../img/2-2.jpg");
     height: 100%;
 }
 
 section.parallax.background-3 {
-    background-image: url("../img/3.jpg");
-    height: 100%;
-}
-
-section.parallax.background-4 {
-    background-image: url("../img/way3.jpg");
+    background-image: url("../img/3-3.jpg");
     height: 100%;
 }
 
@@ -251,16 +254,4 @@ section.parallax.background-4 {
   color: red;
   font-style: italic;
   font-weight: bold;
-}
-
-#userModal img {
-  float: left;
-  max-width: 100px;
-  margin-left: 10%;
-  margin-top: -60px;
-}
-
-#userModal p {
-  max-width: 150px;
-  margin-left: 30%;
 }
