@@ -1,7 +1,7 @@
 // Backend logic
 
 //Ride constructor
-function Ride (from, to, date, time, seats, price){
+function Ride(from, to, date, time, seats, price) {
   this.id = null;
   this.from = from;
   this.to = to;
@@ -13,11 +13,10 @@ function Ride (from, to, date, time, seats, price){
   this.price = price;
 }
 
-Ride.prototype.checkRider = function(user){
-  var result =true
-  this.riders.forEach(function (rider){
-    console.log(rider.id,user.id);
-    if (rider.id === user.id){
+Ride.prototype.checkRider = function(user) {
+  var result = true
+  this.riders.forEach(function(rider) {
+    if (rider.id === user.id) {
       result = false;
     }
   });
@@ -39,20 +38,24 @@ Ride.prototype.getRiders = function() {
   return this.riders;
 };
 
-Ride.prototype.addDriver = function(driverName, allUsersArray) {
-  var newDriverArray = [];
-  allUsersArray.forEach(function(user){
-    if (driverName === user.username) {
-      newDriverArray.push(user);
-    }
-  })
-  this.driver = newDriverArray;
-  console.log("driver name:" + this.driver);
+Ride.prototype.addDriver = function(driver) {
+  this.driver = driver;
 };
 
+// Ride.prototype.addDriver = function(driverName, allUsersArray) {
+//   var newDriverArray = [];
+//   allUsersArray.forEach(function(user){
+//     if (driverName === user.username) {
+//       newDriverArray.push(user);
+//     }
+//   })
+//   this.driver = newDriverArray;
+//   console.log("driver name:" + this.driver);
+// };
+
 //User constructor
-function User (username, password, firstName, lastName, age, image){
-  this.id =null;
+function User(username, password, firstName, lastName, age, image) {
+  this.id = null;
   this.username = username;
   this.password = password;
   this.firstName = firstName;
@@ -62,24 +65,24 @@ function User (username, password, firstName, lastName, age, image){
 }
 
 //RideList constructor
-function RideList () {
+function RideList() {
   this.rides = [];
 };
 
 //RideList prototype methods
-RideList.prototype.addRide = function (ride) {
+RideList.prototype.addRide = function(ride) {
   this.rides.push(ride);
 };
 
-RideList.prototype.removeRide = function (rideId) {
-  this.rides.splice(rideId, 1);
-};
+// RideList.prototype.removeRide = function (rideId) {
+//   this.rides.splice(rideId, 1);
+// };
 
-RideList.prototype.search = function (from, to, date) {
+RideList.prototype.search = function(from, to, date) {
   var result = [];
   for (var i = 0; i < this.rides.length; i++) {
-    if (!date){
-      if (this.rides[i].from === from && this.rides[i].to === to){
+    if (!date) {
+      if (this.rides[i].from === from && this.rides[i].to === to) {
         result.push(this.rides[i]);
       }
     } else if (this.rides[i].from === from && this.rides[i].to === to && this.rides[i].date === date) {
@@ -89,14 +92,14 @@ RideList.prototype.search = function (from, to, date) {
   return result;
 };
 
-RideList.prototype.listRides = function () {
+RideList.prototype.listRides = function() {
   return this.rides;
 };
 
 // Function to display all rides
-var displayRides = function (rides) {
+var displayRides = function(rides) {
   var htmlText = "";
-    rides.forEach(function(ride,index){
+    rides.forEach(function(ride,index) {
     htmlText = htmlText +
 
     //for reference only
@@ -108,7 +111,7 @@ var displayRides = function (rides) {
     // 'To: ' + ride.to + '<br>' +
     // 'Date: ' + ride.date + '<br>' +
     // 'Time: ' + ride.time + '<br>' +
-    // 'Driver: <span class="driver-name" id="' + ride.driver[0].id + '">' + ride.driver[0].username + '</span><br>' +
+    // 'Driver: <span class="driver-name" id="' + ride.driver.id + '">' + ride.driver.username + '</span><br>' +
     // 'Passengers: ' + listRiders(ride.getRiders()) + '<br>' +
     // 'Seats Available: ' + ride.seats + '<br>' +
     // 'Price: ' + ride.price + '<br>' +
@@ -118,70 +121,81 @@ var displayRides = function (rides) {
     // '</div>';
 
     '<div class="row-result" id ="' + ride.id + '">' +
+      '<span class = "text-success" id="success"></span><br>' +
+      '<span class = "text-danger" id="warning"></span><br>' +
       '<div class="col-md-3">' +
-        'Driver: <span class="driver-name" id=' + ride.driver[0].id + '">' + ride.driver[0].username + '</span><br>' +
+        'Driver: <span class="driver-name" id="' + ride.driver.id + '">' + ride.driver.username + '</span><br>' +
       '</div>' +
       '<div class="col-md-4">' +
-        ride.from  + ' <i class="long arrow right icon"></i>' +
+        ride.from  + '<i class="long arrow right icon"></i>' +
         ride.to +
         '<br>' +
-        ride.date + ' at ' + ride.time +
+        ride.date + 'at' + ride.time +
         '</div>' +
         '<div class="col-md-2">' +
           'Price: $' + ride.price +
           '<br>' +
-          ride.seats + ' seats left' +
+          ride.seats + 'seats left' +
         '</div>' +
         '<div class="col-md-2">' +
           '<span class = "btn btn-success join-ride" id="' + ride.id + '">Join Ride</span>'+
         '</div>' +
       '</div>';
-
   });
   return htmlText
 }
 
 // Function to display all info about user
-var displayUserInfo = function (user){
+var displayUserInfo = function(user) {
   if(!user){
-    alert("user doesn't exist!!")
+
   }else{
     var htmlText = "";
     htmlText = htmlText +
-
-    '<div class="row user" id ="' + user.id + '">' +
-    '<p>' +
-    'username: ' + user.username + '<br>' +
-    'Name: ' + user.firstName +' ' + user.lastName + '<br>' +
-    'Age: ' + user.age + '<br>' +
-    '<img src="' + user.image + '"><br>' +
-    '</p>'+
-    '</div>';
+              '<div id="userModal" class="modal fade" tabindex="-1"role="dialog">' +
+                '<div class="modal-dialog">' +
+                  '<div class="modal-content">' +
+                    '<div class="modal-header">' +
+                      '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                      '<h4 class="modal-title">' + user.username + '</h4>' +
+                    '</div>' +
+                    '<div class="modal-body">' +
+                      '<div class="row user" id ="' + user.id + '">' +
+                        '<p>' +
+                          '<strong>Username: </strong>' + user.username + '<br>' +
+                          '<strong>Name: </strong>' + user.firstName +' ' + user.lastName + '<br>' +
+                          '<strong>Age: </strong>' + user.age + '<br>' +
+                        '</p>'+
+                        '<img src="' + user.image + '"><br>' +
+                      '</div>';
+                  '</div>' +
+                '</div>' +
+              '</div>';
   }
   return htmlText
 }
 
 // Function to list riders in a ride
-var listRiders = function (riders){
+var listRiders = function(riders) {
   var htmlText ="";
-  if(riders.length){
+  if(riders.length) {
   htmlText= '<ul>';
   riders.forEach(function(rider) {
     htmlText = htmlText +
       '<li>' + rider.firstName + ' ' + rider.lastName + '</li>';
   });
   htmlText = htmlText + '</ul>';
-}else {
+} else {
   htmlText = "None";
 }
   return htmlText;
 }
 
 // Function to Login
-var login = function (users, username,password) {
+var login = function(users, username,password) {
   var result = false;
-  users.forEach(function(user){
-    if (user.username === username && user.password === password){
+  users.forEach(function(user) {
+    if (user.username === username && user.password === password) {
       result = user;
     }
   });
@@ -195,7 +209,7 @@ var listCities = function(city) {
     if (city === "all") {
       htmlText = htmlText +
       '<option value="' + i + '">' + cities[i] + '</option>';
-    }else if (cities[i] !== city) {
+    } else if (cities[i] !== city) {
       htmlText = htmlText +
       '<option value="' + i + '">' + cities[i] + '</option>';
     }
@@ -214,76 +228,56 @@ $(document).ready(function() {
   $("#from").append(listCities("all"));
   $("#to").append(listCities("all"));
 
-
-
-  // //Sample input for search test
-  // for (var i = 0; i < 3; i++) {
-  //   var newRide = new Ride("Portland", "Seattle", '2016-06-30', '08:00AM', 3, 12);
-  //   newRide.driver = "David";
-  //   allRides.addRide(newRide);
-  //   newRide.id = allRides.rides.length-1;
-
-  // }
-  // for (var i = 0; i < 3; i++) {
-  //   var newRide = new Ride("Seattle", "Portland", '2016-06-20', '08:00AM', 3, 12);
-  //   newRide.driver = "Yuri";
-  //   allRides.addRide(newRide);
-  //   newRide.id = allRides.rides.length-1;
-
-  // }
-
   //Search for a ride
-  $("#search").click(function(){
+  $("#search").click(function() {
     var inputtedFrom = $("#from :selected").val();
     var inputtedTo = $("#to :selected").val();
     var inputtedDate = $("#date").val();
     var searchResults = allRides.search(inputtedFrom,inputtedTo,inputtedDate);
-
     $("#ride-list").empty();
     $("#ride-list").append(displayRides(searchResults));
-
   });
 
   // User registration
   $("#register").click(function() {
     $(".navbar-nav").append('<div id="myModal" class="modal fade" tabindex="-1"role="dialog">' +
-                                '<div class="modal-dialog">' +
-                                  '<div class="modal-content">' +
-                                    '<div class="modal-header">' +
-                                      '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
-                                      '<h4 class="modal-title">Create a new account</h4>' +
-                                    '</div>' +
-                                    '<div class="modal-body">' +
-                                      '<form id="new-user">' +
-                                        '<div class="form-group">' +
-                                          '<label for="username">Username:</label>' +
-                                          '<input type="text" class="form-control" id="username">' +
-                                        '</div>' +
-                                        '<div class="form-group">' +
-                                          '<label for="password">Password:</label>' +
-                                          '<input type="password" class="form-control" id="password">' +
-                                        '</div>' +
-                                        '<div class="form-group">' +
-                                          '<label for="firstname">First Name:</label>' +
-                                          '<input type="text" class="form-control" id="firstname">' +
-                                        '</div>' +
-                                        '<div class="form-group">' +
-                                          '<label for="lastname">Last Name:</label>' +
-                                          '<input type="text" class="form-control" id="lastname">' +
-                                        '</div>' +
-                                        '<div class="form-group">' +
-                                          '<label for="age">Age:</label>' +
-                                          '<input type="number" class="form-control" id="age">' +
-                                        '</div>' +
-                                        '<div class="form-group">' +
-                                          '<label for="image">Image URL:</label>' +
-                                          '<input type="text" class="form-control" id="image">' +
-                                        '</div>' +
-                                        '<button type="submit" name="button" class="btn" id="new-user-submit">SIGN UP</button>' +
-                                      '</form>' +
+                              '<div class="modal-dialog">' +
+                                '<div class="modal-content">' +
+                                  '<div class="modal-header">' +
+                                    '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                                    '<h4 class="modal-title">Create a new account</h4>' +
                                   '</div>' +
+                                  '<div class="modal-body">' +
+                                    '<form id="new-user">' +
+                                      '<div class="form-group">' +
+                                        '<label for="username">Username:</label>' +
+                                        '<input type="text" class="form-control" id="username">' +
+                                      '</div>' +
+                                      '<div class="form-group">' +
+                                        '<label for="password">Password:</label>' +
+                                        '<input type="password" class="form-control" id="password">' +
+                                      '</div>' +
+                                      '<div class="form-group">' +
+                                        '<label for="firstname">First Name:</label>' +
+                                        '<input type="text" class="form-control" id="firstname">' +
+                                      '</div>' +
+                                      '<div class="form-group">' +
+                                        '<label for="lastname">Last Name:</label>' +
+                                        '<input type="text" class="form-control" id="lastname">' +
+                                      '</div>' +
+                                      '<div class="form-group">' +
+                                        '<label for="age">Age:</label>' +
+                                        '<input type="number" class="form-control" id="age">' +
+                                      '</div>' +
+                                      '<div class="form-group">' +
+                                        '<label for="image">Image URL:</label>' +
+                                        '<input type="text" class="form-control" id="image">' +
+                                      '</div>' +
+                                      '<button type="submit" name="button" class="btn" id="new-user-submit">SIGN UP</button>' +
+                                    '</form>' +
                                 '</div>' +
-                              '</div>');
+                              '</div>' +
+                            '</div>');
     $("#myModal").modal('show');
   });
 
@@ -308,19 +302,21 @@ $(document).ready(function() {
   $("#post-ride").click(function() {
     $("#new-ride").show();
   });
+
 // New ride form submission
   $("form#new-ride").submit(function(event) {
     event.preventDefault();
-    var drivername = $("#ride-driver").val();
-    var locationFrom = $("#ride-from").val();
-    var to = $("#ride-to").val();
+    // var drivername = $("#ride-driver").val();
+    var locationFrom = $("#ride-from :selected").text();
+    var to = $("#ride-to :selected").text();
     var date = $("#ride-date").val();
     var time = $("#ride-time").val();
     var price = parseInt($("#ride-price").val());
     var seats = parseInt($("#ride-seats").val());
     var newRide = new Ride(locationFrom, to, date, time, seats, price);
-    newRide.addDriver(drivername, allUsers);
-    newRide.driver[0].id = 0;
+    newRide.addDriver(currentUser);
+    console.log(newRide.driver);
+    newRide.driver.id = 0;
     allRides.addRide(newRide);
     newRide.id = allRides.rides.length-1;
     $("form").trigger("reset");
@@ -335,7 +331,8 @@ $(document).ready(function() {
     $("#ride-list").append(displayRides(allRides.listRides()));
   });
 
-  $("#signup").click(function(){
+// Click signup tab
+  $("#signup").click(function() {
     $("#register").click();
   });
 
@@ -355,11 +352,11 @@ $(document).ready(function() {
 // Join ride
   $("#ride-list").on("click",".join-ride",function () {
     var rideId = this.id;
-    if(allRides.rides[rideId].addRider(currentUser)){
+    if (allRides.rides[rideId].addRider(currentUser)) {
       $("#ride-list").empty();
       $("#ride-list").append(displayRides(allRides.listRides()));
-      $("#warning").text("you are now on this ride!!");
-    }else{
+      $("#success").text("you are now on this ride!!");
+    } else {
       $("#ride-list").empty();
       $("#ride-list").append(displayRides(allRides.listRides()));
       $("#warning").text("Sorry! this ride is full.");
@@ -368,21 +365,52 @@ $(document).ready(function() {
   });
 
 // Display driver info
-  $("#ride-list").on("click",".driver-name",function () {
+  $("#ride-list").on("click",".driver-name",function() {
     var driverId = this.id;
+    console.log(this, this.id);
     $("#ride-list").append(displayUserInfo(allUsers[driverId]));
+    $("#userModal").modal('show');
   });
 
-  $("#ride-from").on("change",function () {
+// Create to/from list in post new ride form
+  $("#ride-from").on("change",function() {
     var rideFrom = $("select#ride-from :selected").text();
     $("#ride-to").empty();
     $("#ride-to").append(listCities(rideFrom));
-  })
+  });
 
-  $("#ride-to").on("change",function () {
+  $("#ride-to").on("change",function() {
     var rideTo = $("select#ride-to :selected").text();
     $("#ride-from").empty();
     $("#ride-from").append(listCities(rideTo));
-  })
+  });
 
+// Create to/from list on search bar
+  $("#from").on("change",function() {
+    var rideFromSearch = $("select#from :selected").text();
+    $("#to").empty();
+    $("#to").append(listCities(rideFromSearch));
+  });
+
+  $("#to").on("change",function() {
+    var rideToSearch = $("select#to :selected").text();
+    $("#from").empty();
+    $("#from").append(listCities(rideToSearch));
+  });
+
+  // //Sample input for search test
+  // for (var i = 0; i < 3; i++) {
+  //   var newRide = new Ride("Portland", "Seattle", '2016-06-30', '08:00AM', 3, 12);
+  //   newRide.driver = "David";
+  //   allRides.addRide(newRide);
+  //   newRide.id = allRides.rides.length-1;
+
+  // }
+  // for (var i = 0; i < 3; i++) {
+  //   var newRide = new Ride("Seattle", "Portland", '2016-06-20', '08:00AM', 3, 12);
+  //   newRide.driver = "Yuri";
+  //   allRides.addRide(newRide);
+  //   newRide.id = allRides.rides.length-1;
+
+  // }
 });// End document.ready
