@@ -81,6 +81,8 @@ RideList.prototype.listRides = function() {
   return this.rides;
 };
 
+
+
 // Function to display all rides
 var displayRides = function(rides) {
   var htmlText = "";
@@ -197,6 +199,12 @@ var listCities = function(city) {
 
 // UI Logic
 $(document).ready(function() {
+  //Change Navbar transparency
+  $(document).on('scroll', function (e) {
+       var alpha = $(document).scrollTop() / 900;
+       $('.navbar').css('background-color', 'rgba(0,0,0,' + alpha + ')');
+  });
+
   var allRides = new RideList();
   var allUsers = [];
   var currentUser = null;

@@ -9,10 +9,19 @@ body {
 
 #new-ride {
   display: none;
+  padding-top: 20px;
+}
+
+.new-user-screen button {
+  margin: 20px;
+  margin-top: 5px;
+  margin-left: 60px;
+  border: none;
 }
 
 #ride-list {
-  margin-top: 50px;
+  margin: 50px;
+  font-size: 18px;
 }
 
 .driver-name:hover {
@@ -26,9 +35,9 @@ display:inline-block;
 }
 
 #search-box {
-  margin-top: -100px;
-  text-align: center;
-  width: 50%;
+  /*display:inline-block;*/
+  /*text-align: center;*/
+  width: auto;
   font-size: 1.5em;
 }
 
@@ -62,6 +71,11 @@ ol {
   margin-top: 20px;
 }
 
+.row-result {
+  padding: 50px;
+  font-size: 18px;
+}
+
 .glyphicon {
   font-size: 50px;
 }
@@ -74,9 +88,10 @@ ol {
   z-index: 1;
 }
 
-.my-navbar {
+.navbar {
   padding-right: 15px;
   color: white;
+  background-color: rgba(0,0,0, 0);
 }
 
 .logo {
@@ -88,15 +103,10 @@ ol {
   color: white;
   font-size: 16px;
 }
+
 .my-navbar > li > a:hover {
   text-decoration: underline;
   background-color: transparent;
-}
-
-#search-box {
-  width: 50%;
-  display:inline-block;
-  width: auto;
 }
 
 html, body {
@@ -127,7 +137,7 @@ h2 {
   text-align: center;
   font-weight: bold;
   padding-bottom: 15px;
-  padding-top: -5px;
+  margin-top: -10px;
 }
 
 .benefits h2 {
@@ -141,22 +151,27 @@ h2 {
   text-decoration: underline;
 }
 
+.number {
+  font-size: 36px;
+  font-weight: bolder;
+}
+
 .instructions p {
   padding-top: 5%;
   font-size: 1.5em;
 }
 
 .testimonial img {
-  height: 100px;
-  width: 100px;
+  height: 150px;
+  width: 150px;
   border-radius: 50%;
-  border: 2px solid #5BC0BE;
+  border: 3px solid #5BC0BE;
   margin-bottom: 20px;
 }
 
 .testimonial {
   font-style: italic;
-  font-size: 1.1em;
+  font-size: 1.2em;
 }
 
 .container-1 {
