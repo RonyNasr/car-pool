@@ -47,7 +47,6 @@ Ride.prototype.addDriver = function(driverName, allUsersArray) {
     }
   })
   this.driver = newDriverArray;
-  console.log("driver name:" + this.driver);
 };
 
 //User constructor

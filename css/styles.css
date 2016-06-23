@@ -2,6 +2,10 @@ body {
   font-family: 'Ubuntu', sans-serif;
 }
 
+/*h1, h2 {
+  color: #74546A;
+}*/
+
 #new-user, #user-sign-in {
   margin-top: 10%;
   color: darkgrey;
@@ -40,6 +44,8 @@ display:inline-block;
   /*text-align: center;*/
   width: auto;
   font-size: 1.5em;
+  padding:
+  /*color: #DCDCDD;*/
 
 }
 /*#search-box {
@@ -53,6 +59,10 @@ display:inline-block;
   border: none;
   color: white;
 }
+
+/*#post-ride {
+  color: white;
+}*/
 
 hr {
   border: 0;
@@ -76,6 +86,7 @@ ol {
 .new-user-screen {
   display: none;
   margin-top: 20px;
+  color: white;
 }
 
 .row-result {
@@ -150,6 +161,7 @@ h2 {
 .benefits h2 {
   padding-top: 30px;
   font-size: 1.5em;
+  color: black;
 }
 
 .instructions {
@@ -213,17 +225,12 @@ section.parallax.background-1 {
 }
 
 section.parallax.background-2 {
-    background-image: url("../img/2.jpg");
+    background-image: url("../img/2-2.jpg");
     height: 100%;
 }
 
 section.parallax.background-3 {
-    background-image: url("../img/3.jpg");
-    height: 100%;
-}
-
-section.parallax.background-4 {
-    background-image: url("../img/way3.jpg");
+    background-image: url("../img/3-3.jpg");
     height: 100%;
 }
 
