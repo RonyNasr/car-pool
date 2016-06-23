@@ -205,7 +205,7 @@ var listTimes = function (){
   var htmlText = ""
   for (var i = 0; i < 24; i++) {
 
-    (i < 10)?htmlText = htmlText + 
+    (i < 10)?htmlText = htmlText +
               '<option value="' + i + '">0' + i + ':00</option>'+
               '<option value="' + i + '">0' + i + ':30</option>'
             :htmlText = htmlText +
@@ -219,8 +219,8 @@ var listTimes = function (){
 $(document).ready(function() {
   //Change Navbar transparency
   $(document).on('scroll', function (e) {
-       var alpha = $(document).scrollTop() / 800;
-       $('.navbar').css('background-color', 'rgba(0,181,173,' + alpha + ')');
+     var alpha = $(document).scrollTop() / 800;
+     $('.navbar').css('background-color', 'rgba(0,181,173,' + alpha + ')');
   });
 
   var allRides = new RideList();
