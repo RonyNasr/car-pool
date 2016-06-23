@@ -15,6 +15,7 @@ This is a website that allows users to register, post scheduled rides, and searc
 |Search for a ride |Ride search criteria |List of rides meeting search criteria |
 |Post a ride |Ride details |"Ride posted" success message |
 |Browse all rides |Click "Browse" button |List of all existing rides |
+|Join a ride |Click "Join" button |"Ride joined" success message |
 
 ## Setup/Installation Requirements
 
