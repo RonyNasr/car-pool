@@ -6,13 +6,20 @@
 
 This is a website that allows users to register, post scheduled rides, and search for rides to join. Rides are described in terms of their to/from locations, date, time, price, and number of seats. There are currently three cities offered to share rides between: Portland, Seattle, and Eugene.
 
+## Specifications
+
+|Behavior    |Input   |Output   |
+|---|---|---|
+|Sign up |User information |New user created |
+|Sign in |Username, password |Greeting screen |
+|Search for a ride |Ride search criteria |List of rides meeting search criteria |
+|Post a ride |Ride details |"Ride posted" success message |
+|Browse all rides |Click "Browse" button |List of all existing rides |
+|Join a ride |Click "Join" button |"Ride joined" success message |
+
 ## Setup/Installation Requirements
 
 Open index.html in browser.
-
-## Known Bugs
-
-TBD
 
 ## Support and contact details
 
