@@ -9,6 +9,14 @@ body {
 
 #new-ride {
   display: none;
+  padding-top: 20px;
+}
+
+.new-user-screen button {
+  margin: 20px;
+  margin-top: 5px;
+  margin-left: 60px;
+  border: none;
 }
 
 
