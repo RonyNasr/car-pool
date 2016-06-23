@@ -46,21 +46,22 @@
           </div>
           <br>
           <br>
+          <br>
           <div class="container " id="search-box">
             <div class="row ride-search">
               <label for="from">FROM:</label>
-                <select id="from" class="form-control top">
+                <select id="from" class="form-control top" style="width:160px">
                   <option value="#"></option>
                 </select>
                 <label for="to">TO:</label>
-                <select id="to" class="form-control top">
+                <select id="to" class="form-control top" style="width:160px">
                   <option value="#"></option>
                 </select>
               <div class="form-group top">
                 <label for="date">Date:</label>
-                <input id="date" class="form-control top" type="date">
+                <input id="date" class="form-control top" type="date" style="width:160px">
               </div>
-            <button class ="btn btn-success" type="button" name="search-btn" id="search">SEARCH</button>
+            <button class ="btn btn-success" type="button" name="search-btn" id="search" style="width:100px">SEARCH</button>
           </div>
         </div>
     </section>
@@ -72,11 +73,12 @@
 
     <div class="new-user-screen">
       <div class="row">
-        <div class="col-xs-6">
-          <h1 id="post-ride"><span class="glyphicon glyphicon-pencil"></span>Post a ride</h1>
+        <div class="col-xs-6 text-center">
+          <button type="button" id="post-ride" class="btn btn-success post-browse-button" style="width:300px"><h2>
+            <span class="glyphicon glyphicon-pencil"></span>Post a ride</h2></button>
         </div>
-        <div class="col-xs-6">
-          <h1 id="browse-ride"><span class="glyphicon glyphicon-globe"></span>Browse all rides</h1>
+        <div class="col-xs-6 text-center">
+          <button type="button" id="browse-ride" class="btn btn-info post-browse-button" style="width:300px"><h2><span class="button-browse glyphicon glyphicon-globe"></span>Browse all rides</h2></button>
         </div>
       </div>
     </div>
