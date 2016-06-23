@@ -65,18 +65,13 @@
         </div>
     </section>
 
-    <div class="container">
-      <div class="row" id="ride-list">
-      </div>
-    </div>
-
     <!-- Create a new ride -->
     <div class="container new-ride">
       <form id="new-ride">
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="ride-driver">Driver Username:</label>
           <input type="text" class="form-control" id="ride-driver">
-        </div>
+        </div> -->
         <div class="ride-from">
           <label for="ride-from">Ride from:</label>
           <select class="form-control" id="ride-from">
@@ -112,6 +107,7 @@
     <!-- Post Ride and Browse All Rides -->
     <div class="new-user-screen">
       <div class="row">
+        <span id="greeting-span"></span>
         <div class="col-xs-6 text-center">
           <button type="button" id="post-ride" class="btn btn-success post-browse-button" style="width:300px"><h2>
             <span class="glyphicon glyphicon-pencil"></span>Post a ride</h2></button>
@@ -119,6 +115,12 @@
         <div class="col-xs-6 text-center">
           <button type="button" id="browse-ride" class="btn btn-info post-browse-button" style="width:300px"><h2><span class="button-browse glyphicon glyphicon-globe"></span>Browse all rides</h2></button>
         </div>
+      </div>
+    </div>
+
+    <!-- List of rides from search and browse functions -->
+    <div class="container">
+      <div class="row" id="ride-list">
       </div>
     </div>
 

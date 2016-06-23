@@ -11,7 +11,6 @@ body {
   display: none;
 }
 
-
 #ride-list {
   margin-top: 50px;
 }
@@ -237,4 +236,16 @@ section.parallax.background-4 {
   color: red;
   font-style: italic;
   font-weight: bold;
+}
+
+#userModal img {
+  float: left;
+  max-width: 100px;
+  margin-left: 10%;
+  margin-top: -60px;
+}
+
+#userModal p {
+  max-width: 150px;
+  margin-left: 30%;
 }
