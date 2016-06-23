@@ -100,7 +100,7 @@ var displayRides = function (rides) {
     htmlText = htmlText +
 
     //for reference only
-
+    //
     // '<div class="row result" id ="' + ride.id + '">' +
     // '<p>' +
     // '<span class = "text-danger" id="warning"></span><br><br>'+
@@ -120,6 +120,7 @@ var displayRides = function (rides) {
     '<div class="row-result" id ="' + ride.id + '">' +
       '<div class="col-md-3">' +
         'Driver: <span class="driver-name" id=' + ride.driver[0].id + '">' + ride.driver[0].username + '</span><br>' +
+        'Passengers: ' + listRiders(ride.getRiders()) + '<br>' +
       '</div>' +
       '<div class="col-md-4">' +
         ride.from  + ' <i class="long arrow right icon"></i>' +
