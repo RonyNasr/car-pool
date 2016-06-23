@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700italic|Ubuntu' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700|Nunito' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="Semantic-UI-master/dist/semantic.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- <link rel="stylesheet" type="text/css" href="css/reset.css" /> -->
@@ -25,16 +24,16 @@
           <span class="icon-bar"></span>
         </button>
       </div>
-      <div>
-        <a class="navbar-brand" href="#"><img class="logo" src="img/CarCool4.png" alt="logo" /></a>
-      </div>
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right my-navbar">
-          <li id="register"><a href="#">Sign up</a></li>
-          <li id="sign-in" class=""><a href="#">Sign-in</a></li>
-        </ul>
-      </div>
+    <div>
+      <a class="navbar-brand" href="#"><img class="logo" src="img/CarCool4.png" alt="logo" /></a>
     </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right my-navbar">
+        <li id="register"><a href="#">Sign up</a></li>
+        <li id="sign-in" class=""><a href="#">Sign-in</a></li>
+      </ul>
+    </div>
+  </div>
 
     <section class="parallax background-1" id="intro">
       <div class="container container-1">
@@ -43,9 +42,6 @@
           <div>
             <h2>CarCool connects travellers to drivers with empty seats.</h2>
           </div>
-          <br>
-          <br>
-          <br>
           <div class="container " id="search-box">
             <div class="row ride-search">
               <label for="from">FROM:</label>
@@ -56,147 +52,145 @@
                 <select id="to" class="form-control top" style="width:160px">
                   <option value="#"></option>
                 </select>
-              <div class="form-group top">
-                <label for="date">Date:</label>
-                <input id="date" class="form-control top" type="date" style="width:160px">
+                <div class="form-group top">
+                  <label for="date">Date:</label>
+                  <input id="date" class="form-control top" type="date" style="width:160px">
+                </div>
+                <button class ="btn btn-success" type="button" name="search-btn" id="search" style="width:100px">SEARCH</button>
               </div>
-              <button class ="btn btn-success" type="button" name="search-btn" id="search" style="width:100px">SEARCH</button>
+            </div>
+          </section>
+          <div class="container">
+            <div class="row" id="ride-list">
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Create a new ride -->
-<div class="container new-ride">
-  <div class="row">
-   <div class="col-md-6">
-     <form id="new-ride">
-       <div class="form-group">
-         <label for="ride-from">Ride from:</label>
-         <select class="form-control" id="ride-from">
-           <option value="#"></option>
-         </select>
-       </div>
-       <div class="form-group">
-         <label for="male-female">Ride to:</label>
-         <select class="form-control" id="ride-to">
-           <option value="#"></option>
-         </select>
-       </div>
-       <div class="form-group">
-         <label for="ride-date">Date:</label>
-         <input type="date" class="form-control" id="ride-date">
-       </div>
-       <div class="form-group">
-         <label for="ride-time">Time:</label>
-         <input type="time" class="form-control" id="ride-time">
-       </div>
-       <div class="form-group">
-         <label for="ride-price">Price:</label>
-         <input type="number" class="form-control" id="ride-price">
-       </div>
-       <div class="form-group">
-         <label for="ride-seats">Available seats:</label>
-         <input type="number" class="form-control" id="ride-seats">
-       </div>
-       <button id="new-ride-submit" type="submit" name="button" class="btn">Submit</button>
-     </form>
-   </div>
-   <div class="new-user-screen">
-       <button type="button" id="post-ride" class="btn btn-success post-browse-button" style="width:300px"><h2>
-       <span class="glyphicon glyphicon-pencil"></span>Post a ride</h2></button>
-       <button type="button" id="browse-ride" class="btn btn-info post-browse-button" style="width:300px"><h2><span class="button-browse glyphicon glyphicon-globe"></span>Browse all rides</h2></button>
-   </div>
-  </div>
-</div>
-
-    <!-- List of rides from search and browse functions -->
-    <div class="container">
-      <div class="row" id="ride-list">
-      </div>
-    </div>
-
-    <section class="content">
-      <div class="container">
-        <div class="row benefits">
-          <div class="col-md-4">
-            <i class="teal massive money icon"></i>
-            <h2>RIDES AT AMAZING PRICES</h2>
-          </div>
-          <div class="col-md-4">
-            <i class="teal massive car icon"></i>
-            <h2>EARN WITH YOUR CAR</h2>
-          </div>
-          <div class="col-md-4">
-            <i class="teal massive users icon"></i>
-            <h2>MEET AWESOME PEOPLE</h2>
-          </div>
-        </div>
-        <hr>
-        <div class="row instructions">
-          <div class="col-md-3">
-            <p>Choose a trip based on departure time and price</p>
-          </div>
-          <div class="col-md-1 arrow">
-            <i class="huge long arrow right icon"></i>
-          </div>
-          <div class="col-md-3">
-            <p>Book a ride</p>
-          </div>
-          <div class="col-md-1 arrow">
-            <i class="huge long arrow right icon"></i>
-          </div>
-          <div class="col-md-3">
-            <p>Pay the driver after arriving at your destination</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-      <section class="parallax background-2" id="">
-        <div class="container container-1">
-          <div class="flex">
-            <h1>JOIN NOW AND START SAVING</h1>
-            <br>
-            <button id="signup" class="btn btn-lg btn-default">SIGN UP</button>
-          </div>
-        </div>
-      </section>
-
-
-      <section class="content">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4 testimonial">
-              <img src="img/testimonial1.png" alt="Testimonail picture" />
-              <p>CarCool is so cool! I found my first developer job through my driver.</p>
-              <br>
-              <p>Hanna, 24</p>
-            </div>
-            <div class="col-md-4 testimonial">
-              <img class="testimonial" src="img/testimonial2.png" alt="Testimonail picture" />
-              <p>I would recommend Carcool to anyone who wants to meet awesome people and save money!</p>
-              <br>
-              <p>Maria, 25</p>
-            </div>
-            <div class="col-md-4 testimonial">
-              <img src="img/testimonial3.png" alt="Testimonail picture" />
-              <p>Most user friendly way to get from point A to point B!</p>
-              <br>
-              <p>David, 28</p>
+          <div class="container new-ride">
+            <div class="row">
+              <div class="col-md-6">
+                <form id="new-ride">
+                  <div class="form-group">
+                    <label for="ride-driver">Driver Username:</label>
+                    <input type="text" class="form-control" id="ride-driver">
+                  </div>
+                  <div class="form-group">
+                    <label for="ride-from">Ride from:</label>
+                    <select class="form-control" id="ride-from">
+                      <option value="#"></option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="male-female">Ride to:</label>
+                    <select class="form-control" id="ride-to">
+                      <option value="#"></option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="ride-date">Date:</label>
+                    <input type="date" class="form-control" id="ride-date">
+                  </div>
+                  <div class="form-group">
+                    <label for="ride-time">Time:</label>
+                    <input type="time" class="form-control" id="ride-time">
+                  </div>
+                  <div class="form-group">
+                    <label for="ride-price">Price:</label>
+                    <input type="number" class="form-control" id="ride-price">
+                  </div>
+                  <div class="form-group">
+                    <label for="ride-seats">Available seats:</label>
+                    <input type="number" class="form-control" id="ride-seats">
+                  </div>
+                  <button id="new-ride-submit" type="submit" name="button" class="btn">Submit</button>
+                </form>
+              </div>
+              <div class="new-user-screen">
+                <button type="button" id="post-ride" class="btn btn-success post-browse-button" style="width:300px"><h2>
+                  <span class="glyphicon glyphicon-pencil"></span>Post a ride</h2></button>
+                  <button type="button" id="browse-ride" class="btn btn-info post-browse-button" style="width:300px"><h2><span class="button-browse glyphicon glyphicon-globe"></span>Browse all rides</h2></button>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <section class="parallax background-3" id="">
-        <div class="container container-1">
-          <div class="flex">
-            <h1>ENJOY YOUR TRIP!</h1>
-          </div>
-        </div>
-      </section>
+          <section class="content">
+            <div class="container">
+              <div class="row benefits">
+                <div class="col-md-4">
+                  <i class="teal massive money icon"></i>
+                  <h2>RIDES AT AMAZING PRICES</h2>
+                </div>
+                <div class="col-md-4">
+                  <i class="teal massive car icon"></i>
+                  <h2>EARN WITH YOUR CAR</h2>
+                </div>
+                <div class="col-md-4">
+                  <i class="teal massive users icon"></i>
+                  <h2>MEET AWESOME PEOPLE</h2>
+                </div>
+              </div>
+              <hr>
+              <div class="row instructions">
+                <div class="col-md-3">
+                  <p>Choose a trip based on departure time and price</p>
+                </div>
+                <div class="col-md-1 arrow">
+                  <i class="huge long arrow right icon"></i>
+                </div>
+                <div class="col-md-3">
+                  <p>Book a ride</p>
+                </div>
+                <div class="col-md-1 arrow">
+                  <i class="huge long arrow right icon"></i>
+                </div>
+                <div class="col-md-3">
+                  <p>Pay the driver after arriving at your destination</p>
+                </div>
+              </div>
+            </div>
+          </section>
 
+          <section class="parallax background-2" id="hero">
+            <div class="container container-1">
+              <div class="flex">
+                <h1>JOIN NOW AND START SAVING</h1>
+                <br>
+                <button id="signup" class="btn btn-lg btn-default">SIGN UP</button>
+              </div>
+            </div>
+          </section>
+
+
+          <section class="content">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-4 testimonial">
+                  <img src="img/testimonial1.png" alt="Testimonail picture" />
+                  <p>"CarCool is cool! I landed my first web development job through my driver."</p>
+                  <br>
+                  <p>Hanna, 24</p>
+                </div>
+                <div class="col-md-4 testimonial">
+                  <img class="testimonial" src="img/testimonial2.png" alt="Testimonail picture" />
+                  <p>"I would recommend CarCool to anyone who wants to meet awesome people and make  money!"</p>
+                  <br>
+                  <p>Maria, 25</p>
+                </div>
+                <div class="col-md-4 testimonial">
+                  <img src="img/testimonial3.png" alt="Testimonail picture" />
+                  <p>"Most user friendly way to get from point A to point B!"</p>
+                  <br>
+                  <p>David, 28</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="parallax background-3" id="">
+            <div class="container container-1">
+              <div class="flex">
+                <h1>ENJOY YOUR TRIP!</h1>
+              </div>
+            </div>
+          </section>
   </body>
 </html>
