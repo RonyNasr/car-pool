@@ -80,6 +80,11 @@ ol {
   color: white;
 }
 
+.logo {
+  width: 80px;
+  height: auto;
+}
+
 .my-navbar > li > a {
   color: white;
   font-size: 20px;
@@ -97,7 +102,7 @@ ol {
 }
 
 html, body {
-    height: 90%;
+    height: 80%;
 }
 
 h1, h2, h3 {
@@ -135,11 +140,25 @@ h2 {
 .instructions {
   padding-top: 2%;
   text-align: center;
+  text-decoration: underline;
 }
 
 .instructions p {
   padding-top: 5%;
   font-size: 1.5em;
+}
+
+.testimonial img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border: 2px solid #5BC0BE;
+  margin-bottom: 20px;
+}
+
+.testimonial {
+  font-style: italic;
+  font-size: 1.1em;
 }
 
 .container-1 {
@@ -179,7 +198,7 @@ section.parallax.background-2 {
 }
 
 section.parallax.background-3 {
-    background-image: url("../img/way10.jpg");
+    background-image: url("../img/3.jpg");
     height: 100%;
 }
 
