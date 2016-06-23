@@ -47,6 +47,7 @@ Ride.prototype.addDriver = function(driverName, allUsersArray) {
     }
   })
   this.driver = newDriverArray;
+  console.log("driver name:" + this.driver);
 };
 
 //User constructor
@@ -91,6 +92,8 @@ RideList.prototype.search = function (from, to, date) {
 RideList.prototype.listRides = function () {
   return this.rides;
 };
+
+
 
 // Function to display all rides
 var displayRides = function (rides) {
@@ -338,6 +341,10 @@ $(document).ready(function() {
                               '</div>');
     $("#sign-in-modal").modal('show');
   });
+
+
+
+
 
   $("#post-ride").click(function() {
     $("#new-ride").show();
