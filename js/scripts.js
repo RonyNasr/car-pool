@@ -204,10 +204,12 @@ var listCities = function(city) {
 var listTimes = function (){
   var htmlText = ""
   for (var i = 0; i < 24; i++) {
-    htmlText = htmlText +
-    (i < 10)? '<option value="' + i + '">0' + i + ':00</option>'+
+
+    (i < 10)?htmlText = htmlText + 
+              '<option value="' + i + '">0' + i + ':00</option>'+
               '<option value="' + i + '">0' + i + ':30</option>'
-            : '<option value="' + i + '">'  + i + ':00</option>'+
+            :htmlText = htmlText +
+              '<option value="' + i + '">'  + i + ':00</option>'+
               '<option value="' + i + '">'  + i + ':30</option>';
   }
   return htmlText;
