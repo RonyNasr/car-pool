@@ -21,7 +21,8 @@ body {
 
 
 #ride-list {
-  margin-top: 50px;
+  margin: 50px;
+  font-size: 18px;
 }
 
 .driver-name:hover {
@@ -69,6 +70,11 @@ ol {
 .new-user-screen {
   display: none;
   margin-top: 20px;
+}
+
+.row-result {
+  padding: 50px;
+  font-size: 18px;
 }
 
 .glyphicon {
