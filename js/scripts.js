@@ -361,7 +361,7 @@ $(document).ready(function() {
     var seats = parseInt($("#ride-seats").val());
     var newRide = new Ride(locationFrom, to, date, time, seats, price);
     newRide.addDriver(drivername, allUsers);
-    newRide.driver[0].id = 0;
+    newRide.driver.id = 0;
     allRides.addRide(newRide);
     newRide.id = allRides.rides.length-1;
     $("form").trigger("reset");
