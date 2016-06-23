@@ -100,45 +100,36 @@ var displayRides = function (rides) {
   var htmlText = "";
     rides.forEach(function(ride,index){
     htmlText = htmlText +
-
-    //for reference only
-    //
-    // '<div class="row result" id ="' + ride.id + '">' +
-    // '<p>' +
-    // '<span class = "text-danger" id="warning"></span><br><br>'+
-    // 'From: ' + ride.from + '<br>' +
-    // 'To: ' + ride.to + '<br>' +
-    // 'Date: ' + ride.date + '<br>' +
-    // 'Time: ' + ride.time + '<br>' +
-    // 'Driver: <span class="driver-name" id="' + ride.driver[0].id + '">' + ride.driver[0].username + '</span><br>' +
-    // 'Passengers: ' + listRiders(ride.getRiders()) + '<br>' +
-    // 'Seats Available: ' + ride.seats + '<br>' +
-    // 'Price: ' + ride.price + '<br>' +
-    // '<span class = "btn btn-success join-ride" id="' + ride.id + '">Join Ride</span>'+
-    // '   '+
-    // '</p>'+
-    // '</div>';
-
-    '<div class="row-result" id ="' + ride.id + '">' +
-      '<div class="col-md-3">' +
-        'Driver: <span class="driver-name" id=' + ride.driver[0].id + '">' + ride.driver[0].username + '</span><br>' +
-        'Passengers: ' + listRiders(ride.getRiders()) + '<br>' +
-      '</div>' +
-      '<div class="col-md-4">' +
-        ride.from  + ' <i class="long arrow right icon"></i>' +
-        ride.to +
-        '<br>' +
-        ride.date + ' at ' + ride.time +
-        '</div>' +
-        '<div class="col-md-2">' +
-          'Price: $' + ride.price +
-          '<br>' +
-          ride.seats + ' seats left' +
-        '</div>' +
-        '<div class="col-md-2">' +
-          '<span class = "btn btn-success join-ride" id="' + ride.id + '">Join Ride</span>'+
-        '</div>' +
-      '</div>';
+              '<div class="row-result" id ="' + ride.id + '">' +
+                '<span class = "text-success" id="success"></span><br>' +
+                '<span class = "text-danger" id="warning"></span><br>' +
+                '<div class="col-md-3">' +
+                  'Driver: <span class="driver-name" id="' + ride.driver.id + '">' + ride.driver.username + '</span><br>' +
+                '</div>' +
+                '<div class="col-md-4">' +
+                  ride.from  + '<i class="long arrow right icon"></i>' +
+                  ride.to +
+                  '<br>' +
+                  ride.date + 'at' + ride.time +
+                '</div>' +
+                '<div class="col-md-2">' +
+                    'Price: $' + ride.price +
+                    '<br>' +
+                    ride.seats + ' seats left' +
+                '</div>';
+                if (ride.seats === 0){
+                  htmlText = htmlText +
+                  '<div class="col-md-2">' +
+                      '<span class = "btn btn-success disabled" id="' + ride.id + '">Join Ride</span>'+
+                  '</div>';
+                }else{
+                  htmlText = htmlText +
+                  '<div class="col-md-2">' +
+                      '<span class = "btn btn-success join-ride" id="' + ride.id + '">Join Ride</span>'+
+                    '</div>'
+                }
+              htmlText = htmlText +
+              '</div>';
 
   });
   return htmlText
@@ -223,24 +214,6 @@ $(document).ready(function() {
   $("#from").append(listCities("all"));
   $("#to").append(listCities("all"));
 
-
-
-  // //Sample input for search test
-  // for (var i = 0; i < 3; i++) {
-  //   var newRide = new Ride("Portland", "Seattle", '2016-06-30', '08:00AM', 3, 12);
-  //   newRide.driver = "David";
-  //   allRides.addRide(newRide);
-  //   newRide.id = allRides.rides.length-1;
-
-  // }
-  // for (var i = 0; i < 3; i++) {
-  //   var newRide = new Ride("Seattle", "Portland", '2016-06-20', '08:00AM', 3, 12);
-  //   newRide.driver = "Yuri";
-  //   allRides.addRide(newRide);
-  //   newRide.id = allRides.rides.length-1;
-
-  // }
-
   //Search for a ride
   $("#search").click(function(){
     var inputtedFrom = $("#from :selected").val();
@@ -312,6 +285,10 @@ $(document).ready(function() {
     $("form").trigger("reset");
     $("#myModal").modal('hide');
     $(".new-user-screen").show();
+    $("#ride-list").empty();
+    console.log(currentUser);
+    $(".hello").prepend('<h2><span id="greeting-span">Hello ' + currentUser.firstName + '!</span></h2>')
+
   });
 
   // sign in modal
@@ -342,12 +319,9 @@ $(document).ready(function() {
     $("#sign-in-modal").modal('show');
   });
 
-
-
-
-
   $("#post-ride").click(function() {
     $("#new-ride").show();
+    // $("#ride-list").hide();
   });
 // New ride form submission
   $("form#new-ride").submit(function(event) {
@@ -372,6 +346,7 @@ $(document).ready(function() {
 
 // Browse all rides
   $("#browse-ride").click(function() {
+    // $("#post-new-ride").hide();
     $("#ride-list").empty();
     $("#ride-list").append(displayRides(allRides.listRides()));
   });
