@@ -104,7 +104,7 @@ var displayRides = function(rides) {
                 '<div class="col-md-2">' +
                     'Price: $' + ride.price +
                     '<br>' +
-                    ride.seats + 'seats left' +
+                    ride.seats + ' seats left' +
                 '</div>';
                 if (ride.seats === 0){
                   htmlText = htmlText +
@@ -285,8 +285,7 @@ $(document).ready(function() {
     $("#myModal").modal('hide');
     $(".new-user-screen").show();
     $("#ride-list").empty();
-    $("#ride-list").append('<span id="greeting-span">Hello ' + currentUser.firstName + '!</span>')
-
+    $(".hello").prepend('<h2><span id="greeting-span">Hello ' + currentUser.firstName + '!</span></h2>')
   });
 
   // sign in modal
@@ -320,6 +319,7 @@ $(document).ready(function() {
 
   $("#post-ride").click(function() {
     $("#new-ride").show();
+    // $("#ride-list").hide();
   });
 
 // New ride form submission
@@ -346,6 +346,7 @@ $(document).ready(function() {
 
 // Browse all rides
   $("#browse-ride").click(function() {
+    // $("#post-new-ride").hide();
     $("#ride-list").empty();
     $("#ride-list").append(displayRides(allRides.listRides()));
   });

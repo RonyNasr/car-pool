@@ -69,7 +69,20 @@
 
     <!-- Create a new ride -->
 <div class="container new-ride">
-  <div class="row">
+  <div class="hello new-user-screen">
+    <div class="row">
+      <div class="col-md-6">
+        <button type="button" id="post-ride" class="btn btn-success post-browse-button" style="width:300px"><h2>
+          <span class="glyphicon glyphicon-pencil"></span>Post a ride</h2></button>
+        </div>
+
+      <div class="col-md-6">
+        <button type="button" id="browse-ride" class="btn btn-info post-browse-button" style="width:300px"><h2>
+          <span class="button-browse glyphicon glyphicon-globe"></span>Browse all rides</h2></button>
+        </div>
+      </div>
+    </div>
+  <div class="row" id="post-new-ride">
    <div class="col-md-6">
      <form id="new-ride">
        <div class="form-group">
@@ -103,17 +116,12 @@
        <button id="new-ride-submit" type="submit" name="button" class="btn">Submit</button>
      </form>
    </div>
-   <div class="new-user-screen">
-       <button type="button" id="post-ride" class="btn btn-success post-browse-button" style="width:300px"><h2>
-       <span class="glyphicon glyphicon-pencil"></span>Post a ride</h2></button>
-       <button type="button" id="browse-ride" class="btn btn-info post-browse-button" style="width:300px"><h2><span class="button-browse glyphicon glyphicon-globe"></span>Browse all rides</h2></button>
-   </div>
   </div>
 </div>
 
     <!-- List of rides from search and browse functions -->
     <div class="container">
-      <div class="row" id="ride-list">
+      <div class="row centered" id="ride-list">
       </div>
     </div>
 
