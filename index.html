@@ -69,61 +69,60 @@
 
     <!-- Create a new ride -->
 
-<div class="container new-ride">
-  <div class="new-user-screen">
-    <span class="hello"></span>
-    <div class="row">
-      <div class="col-md-6">
-        <button type="button" id="post-ride" class="btn btn-success post-browse-button" style="width:300px"><h2>
-          <span class="glyphicon glyphicon-pencil"></span>Post a ride</h2></button>
-        </div>
-        <div class="col-md-6">
-          <button type="button" id="browse-ride" class="btn btn-info post-browse-button" style="width:300px"><h2>
-            <span class="button-browse glyphicon glyphicon-globe"></span>Browse all rides</h2></button>
+    <div class="container new-ride">
+      <div class="new-user-screen">
+        <span class="hello"></span>
+        <div class="row centered">
+          <div class="col-md-6">
+            <button type="button" id="post-ride" class="btn btn-success post-browse-button" style="width:300px"><h2><span class="glyphicon glyphicon-pencil"></span>Post a ride</h2></button>
+          </div>
+          <div class="col-md-6">
+            <button type="button" id="browse-ride" class="btn btn-info post-browse-button" style="width:300px"><h2><span class="button-browse glyphicon glyphicon-globe"></span>Browse all rides</h2></button>
           </div>
         </div>
       </div>
-  </div>
+    </div>
 
-  <div class="row" id="post-new-ride">
-   <div class="col-md-6">
-     <form id="new-ride">
-       <div class="form-group">
-         <label for="ride-from">Ride from:</label>
-         <select class="form-control" id="ride-from">
-           <option value="#"></option>
-         </select>
-       </div>
-       <div class="form-group">
-         <label for="male-female">Ride to:</label>
-         <select class="form-control" id="ride-to">
-           <option value="#"></option>
-         </select>
-       </div>
-       <div class="form-group">
-         <label for="ride-date">Date:</label>
-         <input type="date" class="form-control" id="ride-date">
-       </div>
-       <div class="form-group">
-         <label for="ride-time">Time:</label>
-         <input type="time" class="form-control" id="ride-time">
-       </div>
-       <div class="form-group">
-         <label for="ride-price">Price:</label>
-         <input type="number" class="form-control" id="ride-price">
-       </div>
-       <div class="form-group">
-         <label for="ride-seats">Available seats:</label>
-         <input type="number" class="form-control" id="ride-seats">
-       </div>
-       <button id="new-ride-submit" type="submit" name="button" class="btn">Submit</button>
-     </form>
-   </div>
-  </div>
-</div>
-
-    <!-- List of rides from search and browse functions -->
     <div class="container">
+      <div class="row" id="post-new-ride">
+       <div class="col-md-6">
+         <form id="new-ride">
+           <div class="form-group">
+             <label for="ride-from">Ride from:</label>
+             <select class="form-control" id="ride-from">
+               <option value="#"></option>
+             </select>
+           </div>
+           <div class="form-group">
+             <label for="male-female">Ride to:</label>
+             <select class="form-control" id="ride-to">
+               <option value="#"></option>
+             </select>
+           </div>
+           <div class="form-group">
+             <label for="ride-date">Date:</label>
+             <input type="date" class="form-control" id="ride-date">
+           </div>
+           <div class="form-group">
+             <label for="ride-time">Time:</label>
+             <input type="time" class="form-control" id="ride-time">
+           </div>
+           <div class="form-group">
+             <label for="ride-price">Price:</label>
+             <input type="number" class="form-control" id="ride-price">
+           </div>
+           <div class="form-group">
+             <label for="ride-seats">Available seats:</label>
+             <input type="number" class="form-control" id="ride-seats">
+           </div>
+           <button id="new-ride-submit" type="submit" name="button" class="btn">Submit</button>
+         </form>
+       </div>
+      </div>
+    </div>
+    <!-- List of rides from search and browse functions -->
+    <div class="container centered">
+      <br>
       <div class="row centered" id="ride-list">
       </div>
     </div>

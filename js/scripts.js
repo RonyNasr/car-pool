@@ -104,7 +104,7 @@ var displayRides = function(rides) {
                 '<div class="col-md-2">' +
                     'Price: $' + ride.price +
                     '<br>' +
-                    ride.seats + 'seats left' +
+                    ride.seats + ' seats left' +
                 '</div>';
                 if (ride.seats === 0){
                   htmlText = htmlText +
@@ -356,8 +356,9 @@ $(document).ready(function() {
     newRide.id = allRides.rides.length-1;
     $("form").trigger("reset");
     $("#new-ride").hide();
+    $(".hello").hide();
     $("#ride-list").empty();
-    $("#ride-list").text("Thanks for submitting your ride!");
+    $("#ride-list").append("<h2>Thanks for submitting your ride!<h2>");
   });
 
 // Browse all rides
