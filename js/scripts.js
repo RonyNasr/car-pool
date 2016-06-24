@@ -232,8 +232,8 @@ $(document).ready(function() {
 
   //Search for a ride
   $("#search").click(function() {
-    var inputtedFrom = $("#from :selected").val();
-    var inputtedTo = $("#to :selected").val();
+    var inputtedFrom = $("#from :selected").text();
+    var inputtedTo = $("#to :selected").text();
     var inputtedDate = $("#date").val();
     var searchResults = allRides.search(inputtedFrom,inputtedTo,inputtedDate);
     $("#ride-list").empty();
