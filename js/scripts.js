@@ -237,6 +237,7 @@ $(document).ready(function() {
     var searchResults = allRides.search(inputtedFrom,inputtedTo,inputtedDate);
     $("#ride-list").empty();
     $("#ride-list").append(displayRides(searchResults));
+    $("#ride-list").show();
   });
 
   // User registration
@@ -334,8 +335,8 @@ $(document).ready(function() {
   });
 
   $("#post-ride").click(function() {
+    $("#ride-list").hide();
     $("#new-ride").show();
-    // $("#ride-list").hide();
   });
 
 // New ride form submission
@@ -359,13 +360,15 @@ $(document).ready(function() {
     $(".hello").hide();
     $("#ride-list").empty();
     $("#ride-list").append("<h2>Thanks for submitting your ride!<h2>");
+    $("#ride-list").show();
   });
 
 // Browse all rides
   $("#browse-ride").click(function() {
-    // $("#post-new-ride").hide();
+    $("#new-ride").hide();
     $("#ride-list").empty();
     $("#ride-list").append(displayRides(allRides.listRides()));
+    $("#ride-list").show();
   });
 
 // Click signup tab
