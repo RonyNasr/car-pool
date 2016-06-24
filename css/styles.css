@@ -78,18 +78,6 @@ display:inline-block;
   color: white;
 }
 
-.new-user-screen button {
-  margin: 20px;
-  margin-top: 5px;
-  margin-left: 60px;
-  border: none;
-}
-
-#ride-list {
-  margin: 50px;
-  font-size: 18px;
-}
-
 .driver-name:hover {
   text-decoration: underline;
   cursor: pointer;
@@ -128,6 +116,18 @@ ol {
 	list-style-type:decimal;
 }
 
+#register:hover, #signup:hover, #new-user-submit:hover, #new-ride-submit {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.new-user-screen {
+  display: none;;
+  margin-top: 20px;
+  text-align: center;
+}
+
+
 .row-result {
   padding: 50px;
   font-size: 18px;
@@ -135,6 +135,55 @@ ol {
 
 .glyphicon {
   font-size: 50px;
+}
+
+#rides-list {
+  margin-left: 10%;
+}
+
+.modal-backdrop {
+  z-index: 1;
+}
+
+.navbar {
+  padding-right: 15px;
+  color: white;
+  background-color: rgba(0,0,0, 0);
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.my-navbar > li > a {
+  color: white;
+  font-size: 16px;
+}
+
+.my-navbar > li > a:hover {
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+html, body {
+    height: 80%;
+}
+
+h1, h2, h3 {
+  font-family: 'Lora', serif;
+}
+
+h1 {
+  font-size: 4em;
+  font-weight: 800;
+  text-align: center;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 1.9em;
+  text-align: center;
 }
 
 .content {
@@ -254,4 +303,24 @@ section.parallax.background-3 {
   color: red;
   font-style: italic;
   font-weight: bold;
+}
+
+#userModal img {
+  float: left;
+  max-width: 100px;
+  margin-left: 10%;
+  margin-top: -60px;
+}
+
+#userModal p {
+  max-width: 150px;
+  margin-left: 30%;
+}
+
+.centered {
+  text-align: center;
+}
+
+.hello h2{
+  color: black;
 }
