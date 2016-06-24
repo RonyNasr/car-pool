@@ -85,7 +85,7 @@ RideList.prototype.listRides = function() {
 };
 
 // Function to display all rides
-var displayRides = function(rides) {
+var displayRides = function(rides,currentUser) {
   var htmlText = "";
     rides.forEach(function(ride,index) {
     htmlText = htmlText +
@@ -106,7 +106,7 @@ var displayRides = function(rides) {
                     '<br>' +
                     ride.seats + ' seats left' +
                 '</div>';
-                if (ride.seats === 0){
+                if (ride.seats === 0 || ride.driver.id === currentUser.id){
                   htmlText = htmlText +
                   '<div class="col-md-2">' +
                       '<span class = "btn btn-success disabled" id="' + ride.id + '">Join Ride</span>'+
@@ -236,7 +236,7 @@ $(document).ready(function() {
     var inputtedDate = $("#date").val();
     var searchResults = allRides.search(inputtedFrom,inputtedTo,inputtedDate);
     $("#ride-list").empty();
-    $("#ride-list").append(displayRides(searchResults));
+    $("#ride-list").append(displayRides(searchResults,currentUser));
     $("#ride-list").show();
   });
 
@@ -367,7 +367,7 @@ $(document).ready(function() {
   $("#browse-ride").click(function() {
     $("#new-ride").hide();
     $("#ride-list").empty();
-    $("#ride-list").append(displayRides(allRides.listRides()));
+    $("#ride-list").append(displayRides(allRides.listRides(),currentUser));
     $("#ride-list").show();
   });
 
@@ -402,12 +402,12 @@ $(document).ready(function() {
     if (allRides.rides[rideId].checkRider(currentUser)){
       if (allRides.rides[rideId].addRider(currentUser)) {
         $("#ride-list").empty();
-        $("#ride-list").append(displayRides(allRides.listRides()));
+        $("#ride-list").append(displayRides(allRides.listRides(),currentUser));
         $("#success").text("you are now on this ride!!");
       }
     }else{
       $("#ride-list").empty();
-      $("#ride-list").append(displayRides(allRides.listRides()));
+      $("#ride-list").append(displayRides(allRides.listRides(),currentUser));
       $("#warning").text("you're already on this ride.");
     }
     $(".join-ride").addClass("disabled");
