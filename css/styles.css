@@ -83,6 +83,25 @@ display:inline-block;
   cursor: pointer;
 }
 
+
+.top {
+width:auto;
+display:inline-block;
+}
+
+#search-box {
+  /*display:inline-block;*/
+  /*text-align: center;*/
+  width: auto;
+  font-size: 1.5em;
+}
+
+#search, #signup, #new-user-submit, #new-ride-submit, #sign-in-submit {
+  background-color: rgba(0,181,173,1);
+  border: none;
+  color: white;
+}
+
 hr {
   border: 0;
   border-bottom: 1px dashed #ccc;
@@ -199,7 +218,7 @@ h2 {
   height: 150px;
   width: 150px;
   border-radius: 50%;
-  border: 3px solid #5BC0BE;
+  border: 3px solid rgba(0,181,173,1);
   margin-bottom: 20px;
 }
 
